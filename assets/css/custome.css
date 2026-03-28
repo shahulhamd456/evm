@@ -1,0 +1,4134 @@
+/* ===========================
+   Reset & Base Styles
+   =========================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #000;
+    color: #222;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ===========================
+   Header
+   =========================== */
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 35px 0;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 900;
+    font-style: italic;
+    color: #c41e1e;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav ul li a {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    opacity: 1;
+}
+
+/* ===========================
+   Global Scroll Animations
+   =========================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-50 {
+    transition-delay: 50ms;
+}
+
+.delay-100 {
+    transition-delay: 100ms;
+}
+
+.delay-200 {
+    transition-delay: 200ms;
+}
+
+.delay-300 {
+    transition-delay: 300ms;
+}
+
+.delay-400 {
+    transition-delay: 400ms;
+}
+
+.delay-500 {
+    transition-delay: 500ms;
+}
+
+.delay-600 {
+    transition-delay: 600ms;
+}
+
+.delay-700 {
+    transition-delay: 700ms;
+}
+
+/* ===========================
+   Hero Banner Section
+   =========================== */
+.hero-banner-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    overflow: hidden;
+    background: #000;
+}
+
+/* Video Background */
+.hero-video-wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* White Gradient Overlay (Left Side) */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 65%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 30%,
+            rgba(255, 255, 255, 0.95) 45%,
+            rgba(255, 255, 255, 0.6) 65%,
+            rgba(255, 255, 255, 0) 100%);
+}
+
+/* Content Container */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hero-left {
+    max-width: 600px;
+    transform: translateY(20px);
+}
+
+/* Big "25" Number */
+.hero-big-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 280px;
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: -12px;
+    color: transparent;
+    background-image: url('../images/25\ year\ image.png');
+    background-size: cover;
+    background-position: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+    margin-bottom: 5px;
+}
+
+/* "Years Of Legacy" */
+.hero-legacy-text {
+    font-family: inherit;
+    font-size: 38px;
+    font-style: italic;
+    font-weight: 400;
+    color: #111;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    letter-spacing: 0px;
+}
+
+/* Subheading */
+.hero-subheading {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #c41e1e;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    max-width: 550px;
+    letter-spacing: -0.5px;
+}
+
+/* Description */
+.hero-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #111;
+    line-height: 1.6;
+    max-width: 440px;
+    margin-left: 5px;
+}
+
+/* ===========================
+   About Section
+   =========================== */
+.about-section {
+    height: 830px;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+/* Top Text Grid */
+.about-top-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 40px;
+}
+
+.about-subtitle {
+    display: block;
+    font-size: 20px;
+    font-weight: 500;
+    color: #c41e1e;
+    margin-bottom: 25px;
+    font-family: 'Inter', sans-serif;
+}
+
+.about-title {
+    font-size: 55px;
+    font-weight: 800;
+    color: #111;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 40px;
+    font-family: 'Inter', sans-serif;
+}
+
+.about-highlight {
+    padding-left: 20px;
+    border-left: 4px solid #c41e1e;
+}
+
+.about-highlight p {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.6;
+    max-width: 480px;
+}
+
+.about-text-right {
+    padding-top: 60px;
+}
+
+.about-text-right p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+/* Bottom Image Grid */
+.about-bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 30px;
+}
+
+.about-card {
+    border-radius: 20px;
+    overflow: hidden;
+    height: 262px;
+    position: relative;
+}
+
+/* Red Badge Card */
+.red-badge-card {
+    background: #c41e1e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 20px 40px rgba(196, 30, 30, 0.3);
+}
+
+.badge-num {
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+.badge-text {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Image Cards */
+.img-card {
+    background: #111;
+}
+
+.about-grid-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ===========================
+   Our History Section
+   =========================== */
+.history-section {
+    position: relative;
+    padding: 80px 0;
+    background: #ffffff;
+    /* overflow: hidden; removed to allow nested position: sticky to function! */
+    min-height: 800px;
+}
+
+.history-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background-image: url('../images/history\ bg\ 1.png');
+    background-size: contain;
+    background-position: bottom center;
+    background-repeat: repeat-x;
+    z-index: 0;
+}
+
+.sticky-scroll-section {
+    position: relative;
+    height: 400vh;
+    /* 4 strict scrolling anchor steps */
+}
+
+.history-sticky-wrapper {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.history-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    height: 100%;
+}
+
+.history-header {
+    width: 100%;
+    padding: 0 60px;
+    margin-bottom: 20px;
+    position: relative;
+    /* Kept relative since it's inside the sticky wrapper! */
+    z-index: 20;
+}
+
+.history-title {
+    font-size: 55px;
+    font-weight: 800;
+    color: #c41e1e;
+    margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+.history-subtitle {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.timeline-track {
+    position: relative;
+    width: 100%;
+    height: 300vh;
+    /* Tripled height for 24 nodes */
+    will-change: transform;
+}
+
+.timeline-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.timeline-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.timeline-node {
+    position: absolute;
+    /* Completely removed translate. The inline left/top are mathematically identical to SVG endpoints */
+    width: 0;
+    height: 0;
+    z-index: 10;
+}
+
+.node-image-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.node-large .node-image-wrapper {
+    width: 130px;
+    height: 130px;
+}
+
+.node-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.node-year {
+    position: absolute;
+    bottom: -15px;
+    /* Overlap circle border exactly like image */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #000;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 3px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+.node-text {
+    position: absolute;
+    top: 60px;
+    /* Offset physically below the circle bounds */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    text-align: center;
+    font-size: 13px;
+    color: #000;
+    line-height: 1.4;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    z-index: 2;
+    background: transparent;
+}
+
+.node-large .node-text {
+    top: 75px;
+}
+
+/* ===========================
+   Dealers Section
+   =========================== */
+.dealers-section {
+    width: 100%;
+    background: #ffffff;
+
+    margin: 0;
+    overflow: hidden;
+}
+
+.dealers-container {
+    display: flex;
+
+    margin: 0 auto;
+    padding: 0 60px;
+    width: 100%;
+    height: 600px;
+    gap: 0px;
+}
+
+.dealer-panel {
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: flex 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease, margin 0.8s ease, min-width 0.8s ease;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-right: 15px;
+}
+
+.dealer-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 5;
+    pointer-events: none;
+    transition: background 0.5s ease;
+}
+
+/* Ensure only 4 items show dynamically as rotation occurs based on class */
+.dealers-container .dealer-panel.dp-1 {
+    flex: 12 !important;
+    opacity: 1;
+}
+
+.dealers-container .dealer-panel.dp-2 {
+    flex: 4 !important;
+    opacity: 1;
+}
+
+.dealers-container .dealer-panel.dp-3 {
+    flex: 1 !important;
+    opacity: 1;
+}
+
+.dealers-container .dealer-panel.dp-4 {
+    flex: 1 !important;
+    opacity: 1;
+    margin-right: 0;
+}
+
+.dealers-container .dealer-panel.dp-hidden {
+    flex: 0 !important;
+    opacity: 0 !important;
+    min-width: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    pointer-events: none;
+}
+
+.dealer-panel .dealer-info {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    right: 0;
+    color: #fff;
+    z-index: 10;
+    white-space: nowrap;
+    /* prevent wrapping during narrow flex states */
+}
+
+.dealer-panel.active .dealer-info {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;
+    pointer-events: auto;
+}
+
+.dealers-title {
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    font-size: 36px;
+    font-weight: 600;
+    color: #fff;
+    z-index: 15;
+    font-family: 'Inter', sans-serif;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dealer-panel.active .dealers-title {
+    opacity: 1;
+    transition: opacity 0.7s ease 0.3s;
+}
+
+.dealer-info h3 {
+    font-size: 50px;
+    font-weight: 800;
+    margin-bottom: 5px;
+    font-family: 'Inter', sans-serif;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
+.dealer-info h3 span {
+    color: #c41e1e;
+    margin-right: 15px;
+}
+
+.dealer-info p {
+    font-size: 15px;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: 'Inter', sans-serif;
+}
+
+.dealer-line {
+    width: calc(100% - 60px);
+    height: 1px;
+    background: #fff;
+    margin-top: 0px;
+}
+
+/* ===========================
+   Directors Section
+   =========================== */
+.directors-section {
+    padding: 100px 80px;
+    background-color: #ffffff;
+}
+
+.directors-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.directors-header-left {
+    max-width: 50%;
+}
+
+.directors-subtitle {
+    color: #e53935;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.directors-title {
+    color: #0b1a2f;
+    font-size: 55px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.directors-header-right {
+    border-left: 2px solid #e2e8f0;
+    padding-left: 25px;
+    max-width: 450px;
+}
+
+.directors-header-right p {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.directors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.director-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.director-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(229, 57, 53, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.director-image {
+    background: #eeeeee;
+    padding-top: 30px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.director-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.director-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.6s ease;
+    position: relative;
+    z-index: 0;
+}
+
+.director-info {
+    padding: 30px 25px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s ease;
+}
+
+.info-top {
+    border-left: 3px solid #e53935;
+    padding-left: 15px;
+    transition: border-width 0.4s ease, padding-left 0.4s ease;
+}
+
+.director-role {
+    color: #e53935;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.4s ease;
+}
+
+.director-name {
+    color: #0b1a2f;
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.5px;
+    transition: color 0.4s ease;
+}
+
+.info-bottom {
+    margin-top: 5px;
+}
+
+.director-tag {
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.4s ease;
+}
+
+/* ===========================
+   Achievements Section
+   =========================== */
+.achievements-section {
+    padding: 100px 120px;
+    background-color: #fafafa;
+    /* slightly off white to make the crisp white cards pop */
+
+}
+
+.achievements-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.achievements-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 15px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -1px;
+}
+
+.achievements-subtitle {
+    font-size: 18px;
+    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+.main-achievement-card {
+    display: flex;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    margin-bottom: 30px;
+    border: 1px solid #f1f5f9;
+    max-height: 360px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-achievement-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+}
+
+.achievement-image-column {
+    flex: 1.1;
+    position: relative;
+    max-width: 50%;
+    overflow: hidden;
+}
+
+.achievement-image-column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-achievement-card:hover .achievement-image-column img {
+    transform: scale(1.08);
+}
+
+.feat-badge {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    background: #ffffff;
+    color: #0f172a;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-achievement-card:hover .feat-badge {
+    background: #0ea5e9;
+    color: #ffffff;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.3);
+}
+
+.achievement-content-column {
+    flex: 1;
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.achievement-heading {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 25px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+.achievement-desc {
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 50px;
+    font-family: 'Inter', sans-serif;
+}
+
+.achievement-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #cbd5e1;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.active {
+    width: 32px;
+    background: #0ea5e9;
+    border-radius: 4px;
+}
+
+.bottom-awards-row {
+    display: flex;
+    gap: 30px;
+}
+
+.award-card {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid #334155;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background gradient sweep */
+.award-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.05), transparent);
+    transition: left 0.7s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.award-card:hover::before {
+    left: 100%;
+}
+
+.award-logo {
+    flex: 0 0 120px;
+    margin-right: 30px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.award-logo img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.award-card:hover .award-logo img {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+.award-text {
+    position: relative;
+    z-index: 2;
+}
+
+.award-text h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.4s ease;
+}
+
+.award-card:hover .award-text h4 {
+    color: #0ea5e9;
+}
+
+.award-text p {
+    color: #1e293b;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ===========================
+   Testimonials Section
+   =========================== */
+.testimonials-section {
+    padding: 100px 0;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.testimonials-container {
+    max-width: 1260px;
+    margin: 0 auto;
+}
+
+.testimonials-header {
+    margin-bottom: 50px;
+}
+
+.testimonials-subtitle {
+    color: #c41e1e;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+.testimonials-title {
+    color: #1a1a1a;
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    margin: 0 0 15px 0;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+}
+
+.testimonials-line {
+    width: 60px;
+    height: 4px;
+    background: #c41e1e;
+    border-radius: 2px;
+}
+
+.testimonial-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    width: 100%;
+}
+
+/* Main Active Card */
+.t-main-card {
+    display: flex;
+    width: 860px;
+    height: 480px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.t-main-image {
+    width: 45%;
+    height: 100%;
+    position: relative;
+}
+
+.t-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.t-image-border {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background-color: #0ea5e9;
+    z-index: 2;
+}
+
+.t-main-content {
+    width: 55%;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    background: #fff;
+}
+
+.t-quote-icon {
+    margin-bottom: 30px;
+}
+
+.t-quote-text {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #4b5563;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+.t-author-info {
+    margin-top: 20px;
+}
+
+.t-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+.t-role {
+    font-size: 15px;
+    color: #8fa0c3;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Side Cards */
+.t-side-card {
+    width: 170px;
+    height: 480px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.t-side-card:hover {
+    transform: scale(1.02);
+}
+
+.t-side-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4);
+    transition: filter 0.3s ease;
+}
+
+.t-side-card:hover img {
+    filter: brightness(0.5);
+}
+
+.t-arrow-overlay {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* Responsive constraints */
+@media (max-width: 1220px) {
+    .testimonials-container {
+        padding: 0 40px;
+    }
+
+    .testimonial-carousel {
+        position: relative;
+        justify-content: center;
+        overflow: hidden;
+        padding-bottom: 0;
+    }
+
+    .t-main-card {
+        width: 100%;
+        max-width: 860px;
+        flex-direction: row;
+        height: auto;
+        min-height: 480px;
+    }
+
+    .t-main-image {
+        width: 45%;
+        height: auto;
+    }
+
+    .t-main-image img {
+        object-fit: cover;
+        object-position: center top;
+        width: 100%;
+        height: 100%;
+    }
+
+    .t-main-content {
+        width: 55%;
+        padding: 40px 30px;
+    }
+
+    .t-side-card {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 10;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .t-side-card:hover,
+    .t-side-card:active {
+        transform: translateY(-50%) scale(1.05) !important;
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    .t-prev {
+        left: 0;
+    }
+
+    .t-next {
+        right: 0;
+    }
+
+    .t-side-card img {
+        display: none !important;
+    }
+
+    .t-arrow-overlay {
+        position: relative;
+        top: 0;
+        transform: none;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+
+@media (max-width: 900px) {
+    .testimonial-carousel {
+        position: relative;
+        max-width: 500px;
+        margin: 0 auto;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .t-main-card {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .t-main-image {
+        width: 100%;
+        height: 300px;
+        background-color: #fafbfc;
+    }
+
+    .t-main-image img {
+        object-fit: contain;
+        object-position: center bottom;
+    }
+
+    .t-main-content {
+        width: 100%;
+        padding: 40px 30px;
+    }
+
+    .t-image-border {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        width: 100%;
+        height: 4px;
+    }
+
+    .t-side-card {
+        display: flex;
+        position: absolute;
+        top: 130px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 10;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .t-side-card:hover,
+    .t-side-card:active {
+        transform: scale(1.05) !important;
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    .t-prev {
+        left: 15px;
+    }
+
+    .t-next {
+        right: 15px;
+    }
+
+    .t-side-card img {
+        display: none !important;
+    }
+
+    .t-arrow-overlay {
+        position: relative;
+        top: 0;
+        transform: none;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+/* ===========================
+   Footer Section
+   =========================== */
+.site-footer {
+    background-color: #111111;
+    padding: 80px 40px;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Footer Top */
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 50px;
+}
+
+.footer-cta h2 {
+    font-size: 36px;
+    font-weight: 300;
+    margin: 0 0 8px 0;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-cta p {
+    font-size: 14px;
+    color: #a3a3a3;
+    margin: 0;
+}
+
+.btn-book-now {
+    background-color: #0ea5e9;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 34px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.btn-book-now:hover {
+    background-color: #0284c7;
+}
+
+/* Footer Middle */
+.footer-middle {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 30px;
+}
+
+.brand-col {
+    flex: 0 0 35%;
+    padding-right: 40px;
+}
+
+.footer-logo {
+    color: #e53935;
+    font-family: Georgia, serif;
+    font-size: 38px;
+    font-weight: 800;
+    font-style: italic;
+    margin: 0 0 15px 0;
+    letter-spacing: -1px;
+}
+
+.brand-desc {
+    color: #e5e5e5;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 280px;
+    margin: 0;
+}
+
+.links-col {
+    flex: 1;
+}
+
+.links-col h4 {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 25px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.links-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.links-col li {
+    margin-bottom: 18px;
+}
+
+.links-col a {
+    color: #d4d4d4;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-family: 'Inter', sans-serif;
+}
+
+.links-col a:hover {
+    color: #ffffff;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-copyright {
+    color: #a3a3a3;
+    font-size: 13px;
+}
+
+.footer-legal a {
+    color: #a3a3a3;
+    font-size: 13px;
+    text-decoration: none;
+    margin-left: 30px;
+    transition: color 0.3s;
+}
+
+.footer-legal a:hover {
+    color: #ffffff;
+}
+
+/* ===========================
+   Premium Animations & Hovers
+   =========================== */
+
+/* Scroll Reveal Utilities */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+/* Enhanced Hover Interactions */
+.about-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.director-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+.director-card:hover::before {
+    opacity: 1;
+}
+
+.director-card:hover .director-image::after {
+    opacity: 1;
+}
+
+.director-card:hover img {
+    transform: scale(1.08) translateY(-5px);
+    filter: brightness(1.05);
+}
+
+.director-card:hover .info-top {
+    border-left-width: 6px;
+    padding-left: 12px;
+}
+
+.director-card:hover .director-name {
+    color: #e53935;
+}
+
+.director-card:hover .director-tag {
+    transform: translateX(5px);
+    color: #0b1a2f;
+}
+
+.award-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s;
+    cursor: pointer;
+}
+
+.award-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(14, 165, 233, 0.1);
+    border-color: #0ea5e9;
+}
+
+.timeline-node {
+    transition: transform 0.3s ease;
+}
+
+.node-image-wrapper img {
+    transition: transform 0.5s ease;
+}
+
+.timeline-node:hover .node-image-wrapper img {
+    transform: scale(1.08);
+}
+
+.timeline-node:hover {
+    z-index: 10;
+}
+
+.btn-book-now,
+.nav-prev,
+.nav-next,
+.dot {
+    cursor: pointer;
+}
+
+/* JS Transitions for fading text */
+.achievement-heading,
+.achievement-desc,
+.achievement-image-column img,
+.car-model,
+.customer-name,
+.customer-review,
+.testimonial-image img {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.node-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.full-details-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #007bff;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+}
+
+.node-image-wrapper:not(.has-overlay) .node-overlay,
+.node-image-wrapper:not(.has-overlay) .full-details-btn {
+    display: none;
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 1200px) {
+    .hero-big-number {
+        font-size: 200px;
+        letter-spacing: -8px;
+    }
+
+    .header-container {
+        padding: 0 40px;
+    }
+
+    .hero-content {
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-big-number {
+        font-size: 160px;
+        letter-spacing: -6px;
+    }
+
+    .hero-legacy-text {
+        font-size: 30px;
+    }
+
+    .hero-overlay {
+        width: 75%;
+    }
+
+    .hero-subheading {
+        font-size: 24px;
+        max-width: 100%;
+    }
+
+    .about-top-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-text-right {
+        padding-top: 0;
+    }
+
+    .about-bottom-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .porsche-card {
+        grid-column: 1 / -1;
+    }
+
+    .badge-num {
+        font-size: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 30px;
+    }
+
+    .main-nav ul {
+        gap: 15px;
+    }
+
+    .main-nav ul li a {
+        font-size: 14px;
+    }
+
+    .hero-big-number {
+        font-size: 120px;
+        letter-spacing: -4px;
+    }
+
+    .hero-legacy-text {
+        font-size: 24px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+        max-width: 350px;
+    }
+
+    .hero-overlay {
+        width: 85%;
+    }
+
+    .hero-subheading {
+        font-size: 20px;
+    }
+
+    .about-title {
+        font-size: 38px;
+    }
+
+    .about-section {
+        height: auto;
+        padding: 80px 0;
+    }
+
+    .about-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .porsche-card {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .hero-big-number {
+        font-size: 90px;
+    }
+
+    .hero-description {
+        max-width: 100%;
+    }
+}
+
+/* ===========================
+   History Cards Section
+   =========================== */
+.history-cards-section {
+    padding: 80px 0 100px 0;
+    background-color: #ffffff;
+}
+
+.history-cards-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+
+@media (max-width: 480px) {
+    .history-cards-header {
+        margin-bottom: 30px;
+    }
+}
+
+.history-cards-header h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 62px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: -2px;
+    margin: 0;
+    display: inline-block;
+}
+
+.history-cards-header h2 .history-normal {
+    font-weight: 300;
+}
+
+.history-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.history-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 70%;
+    height: 3px;
+    background-color: #c41e1e;
+    border-radius: 2px;
+}
+
+.history-slider-wrapper {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.history-nav {
+    position: absolute;
+    top: 35%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid #e2e8f0;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.history-nav:hover {
+    background: #1a1a1a;
+    color: #ffffff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    border-color: #1a1a1a;
+}
+
+.history-nav.prev-btn {
+    left: 10px;
+}
+
+.history-nav.next-btn {
+    right: 10px;
+}
+
+.history-cards-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 10px 60px 40px 60px;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.history-cards-container::-webkit-scrollbar {
+    display: none;
+}
+
+.history-card {
+    flex: 0 0 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scroll-snap-align: start;
+    text-align: center;
+    padding: 0 12px;
+    position: relative;
+}
+
+.hc-image {
+    width: 200px;
+    height: 353px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    flex-shrink: 0;
+    border-radius: 9px
+}
+
+.history-action {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-full-details {
+    display: inline-block;
+    padding: 16px 45px;
+    background: transparent;
+    color: #1a1a1a;
+    border: 2px solid #1a1a1a;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+    border-radius: 30px;
+}
+
+.btn-full-details:hover {
+    background: #1a1a1a;
+    color: #ffffff;
+    box-shadow: 0 10px 20px rgba(26, 26, 26, 0.2);
+    transform: translateY(-3px);
+}
+
+.hc-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.history-card:hover .hc-image img {
+    transform: scale(1.04);
+}
+
+/* Dotted timeline row */
+.hc-timeline {
+    width: 100%;
+    height: 24px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.hc-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    height: 0;
+    border-top: 2px dashed #aaa;
+    z-index: 1;
+}
+
+.hc-dot {
+    width: 14px;
+    height: 14px;
+    background-color: #1a1a1a;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #1a1a1a;
+}
+
+.hc-year {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.hc-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+    text-align: center;
+}
+
+/* ===========================
+   Trust Section
+   =========================== */
+.trust-section {
+    padding: 100px 120px;
+    background: #f8f9fc;
+    display: flex;
+    justify-content: center;
+}
+
+.trust-container {
+    max-width: 1260px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 30px;
+}
+
+/* Left Card */
+.trust-left {
+    background: #060b14;
+    border-radius: 24px;
+    padding: 50px 40px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.trust-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #00a8ff;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    width: fit-content;
+    font-family: 'Inter', sans-serif;
+}
+
+.trust-title {
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 25px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -1.5px;
+    color: #fff;
+}
+
+.highlight-year {
+    background: linear-gradient(90deg, #6c8dfa, #a87ffb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.trust-desc {
+    color: #8a94b5;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+}
+
+.trust-leaders {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.trust-avatars {
+    display: flex;
+    align-items: center;
+}
+
+.trust-avatars img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid #060b14;
+    margin-left: -12px;
+    object-fit: cover;
+}
+
+.trust-avatars img:first-child {
+    margin-left: 0;
+}
+
+.trust-avatar-more {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #1a2235;
+    border: 2px solid #060b14;
+    margin-left: -12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    z-index: 1;
+    font-family: 'Inter', sans-serif;
+}
+
+.trust-leaders-text {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    margin-left: 10px;
+}
+
+.trust-leaders-text strong {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+.trust-leaders-text span {
+    font-size: 12px;
+    color: #8a94b5;
+}
+
+/* Right Section */
+.trust-right {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Top Image Card */
+.trust-image-card {
+    height: 360px;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.trust-building-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.trust-arrow-btn {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.trust-arrow-btn svg {
+    margin-bottom: 0;
+}
+
+.top-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.top-btn:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+/* Bottom Cards */
+.trust-bottom-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.trust-stat-card {
+    height: 270px;
+    border-radius: 24px;
+    padding: 35px;
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.white-card {
+    background: #ffffff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+}
+
+.blue-card {
+    background: #00a8ff;
+    color: #fff;
+    box-shadow: 0 15px 40px rgba(0, 168, 255, 0.25);
+}
+
+.trust-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.trust-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.white-card .trust-icon {
+    background: #f4f6f9;
+    color: #111;
+}
+
+.blue-card .trust-icon {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.small-btn {
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid;
+}
+
+.outline-btn {
+    border-color: #e2e8f0;
+    color: #94a3b8;
+}
+
+.outline-btn:hover {
+    background: #f8fafc;
+    color: #111;
+    border-color: #cbd5e1;
+}
+
+.light-btn {
+    border-color: transparent;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.light-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.trust-stat-info {
+    margin-top: auto;
+}
+
+.trust-stat {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -2px;
+}
+
+.white-card .trust-stat {
+    color: #060b14;
+}
+
+.white-card .trust-stat-desc {
+    color: #64748b;
+}
+
+.blue-card .trust-stat {
+    color: #ffffff;
+}
+
+.blue-card .trust-stat-desc {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.trust-stat-desc {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .trust-container {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-left {
+        min-height: 450px;
+    }
+}
+
+@media (max-width: 600px) {
+    .trust-bottom-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   Framer Style Reveal Animations
+   ========================================= */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+.framer-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+.framer-reveal.reveal-img {
+    transform: scale(1.15);
+    filter: blur(5px);
+    transition: opacity 1.5s ease, transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), filter 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.framer-in-view {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+}
+
+.framer-in-view.reveal-img {
+    transform: scale(1) !important;
+    filter: blur(0) !important;
+}
+
+.delay-100 {
+    transition-delay: 100ms;
+}
+
+.delay-200 {
+    transition-delay: 200ms;
+}
+
+.delay-300 {
+    transition-delay: 300ms;
+}
+
+.delay-400 {
+    transition-delay: 400ms;
+}
+
+.delay-500 {
+    transition-delay: 500ms;
+}
+
+
+
+/* =========================================
+   25th Anniversary Modal Popup
+   ========================================= */
+.anniversary-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.popup-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.popup-modal {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    background: #ffffff;
+    /* Clean EVM White */
+    border-radius: 24px;
+    padding: 60px 40px 40px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+
+    opacity: 0;
+    transform: scale(0.85) translateY(40px);
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease;
+}
+
+.anniversary-popup.show {
+    pointer-events: auto;
+}
+
+.anniversary-popup.show .popup-overlay {
+    opacity: 1;
+}
+
+.anniversary-popup.show .popup-modal {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.popup-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.popup-close:hover {
+    color: #111;
+    transform: scale(1.15) rotate(90deg);
+}
+
+.popup-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.premium-25 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 8px solid #f8f9fa;
+    font-size: 80px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    line-height: 1;
+    background: #c41e1e;
+    /* EVM Red */
+    box-shadow: 0 15px 35px rgba(196, 30, 30, 0.3);
+    animation: floatPopup 6s ease-in-out infinite;
+}
+
+@keyframes floatPopup {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.popup-text {
+    position: relative;
+    z-index: 2;
+}
+
+.popup-text h3 {
+    color: #111111;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    font-family: 'Satisfy', cursive;
+    letter-spacing: 1px;
+}
+
+.popup-text p {
+    color: #555555;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    min-height: 48px;
+}
+
+/* Confetti Styles (EVM Brand Colors) */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 24px;
+    border-radius: 4px;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.c-1 {
+    background: #c41e1e;
+    top: 15%;
+    left: 15%;
+    transform: rotate(45deg);
+}
+
+.c-2 {
+    background: #111111;
+    top: 25%;
+    left: 80%;
+    transform: rotate(-30deg);
+    height: 16px;
+}
+
+.c-3 {
+    background: #e0e0e0;
+    top: 60%;
+    left: 10%;
+    transform: rotate(15deg);
+}
+
+.c-4 {
+    background: #c41e1e;
+    top: 70%;
+    left: 85%;
+    transform: rotate(-45deg);
+}
+
+.c-5 {
+    background: #111111;
+    top: 10%;
+    left: 60%;
+    transform: rotate(70deg);
+    height: 14px;
+}
+
+.c-6 {
+    background: #e0e0e0;
+    top: 80%;
+    left: 40%;
+    transform: rotate(90deg);
+}
+
+.c-7 {
+    background: #ffdddd;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: 40%;
+    left: 20%;
+    transform: scale(0.6);
+}
+
+.c-8 {
+    background: #c41e1e;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: 50%;
+    left: 75%;
+    transform: scale(0.8);
+}
+
+@media (max-width: 768px) {
+    .popup-modal {
+        padding: 50px 30px 30px;
+    }
+
+    .premium-25 {
+        width: 110px;
+        height: 110px;
+        font-size: 60px;
+        border-width: 6px;
+    }
+}
+
+
+/* =========================================
+   Fix for Dealers Title Bleed on Inactive Panels
+   ========================================= */
+.dealer-panel:not(.active) .dealers-title {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* =========================================
+   Primary Navigation Dropdown Menu
+   ========================================= */
+.main-nav ul li.nav-item-dropdown {
+    position: relative;
+}
+
+.main-nav ul li.nav-item-dropdown>a {
+    display: flex;
+    align-items: center;
+}
+
+/* Primary Dropdown Menu Level 1 */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(15px);
+    background: #ffffff;
+    min-width: 220px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    /* Premium shadow */
+    border-radius: 8px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+    list-style: none;
+    display: flex;
+    /* Override the default header flex row */
+    flex-direction: column;
+}
+
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    /* Invisible bridge connecting the gap from header to menu */
+}
+
+/* Activate Primary Dropdown on Hover */
+.nav-item-dropdown:hover>.dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu li {
+    width: 100%;
+    margin: 0 !important;
+    /* Override global main-nav global li margins */
+    padding: 0;
+}
+
+.dropdown-menu li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    color: #111111 !important;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.dropdown-menu li a:hover {
+    background: #f8f9fa;
+    color: #c41e1e !important;
+    /* EVM Red */
+}
+
+.dropdown-menu li a .r-arrow {
+    stroke: transparent;
+    transition: stroke 0.2s;
+}
+
+/* =========================================
+   Secondary Navigation Dropdown Menu (Automobile Level 2)
+   ========================================= */
+.nav-item-sub-dropdown {
+    position: relative;
+}
+
+.sub-dropdown-menu {
+    position: absolute;
+    top: -10px;
+    right: 100%;
+    /* POP OUT to the LEFT! */
+    margin-right: 5px;
+    /* Spacing gap from parent */
+    background: #ffffff;
+    min-width: 320px;
+    /* Needs to fit wide rental names cleanly */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    /* Small slide intro */
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1001;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    width: 20px;
+    height: 100%;
+    /* Invisible bridge spanning gap from primary dropdown to sub dropdown */
+}
+
+/* Activate Secondary Dropdown on Hover */
+.nav-item-sub-dropdown:hover>.sub-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Sticky Parent Hover State (Forces Automobile link to stay Red while operating left menu) */
+.nav-item-sub-dropdown:hover>a {
+    color: #c41e1e !important;
+    background: #f8f9fa;
+}
+
+.nav-item-sub-dropdown:hover>a .r-arrow {
+    stroke: #c41e1e;
+}
+
+
+/* =========================================
+   Dropdown Specificity & Visibility Fixes
+   ========================================= */
+
+/* 1. Force Sector Caret SVG Visibility */
+.main-nav ul li.nav-item-dropdown>a svg {
+    display: inline-block !important;
+    min-width: 14px;
+    min-height: 14px;
+    stroke: #ffffff !important;
+    /* Force explicit white fill against dark overlay */
+    stroke-width: 3px !important;
+    margin-left: 6px;
+    margin-top: 2px;
+}
+
+/* 2. Fix the Automobile right-arrow invisible state */
+.dropdown-menu li a .r-arrow {
+    stroke: #cccccc !important;
+    /* Explicit grey when idle */
+    min-width: 14px;
+    min-height: 14px;
+    margin-left: 20px;
+    /* Force it right */
+    display: inline-block !important;
+    transition: stroke 0.2s, transform 0.2s !important;
+}
+
+/* Sub-Arrow hover RED state */
+.dropdown-menu li.nav-item-sub-dropdown>a:hover .r-arrow,
+.nav-item-sub-dropdown:hover>a .r-arrow {
+    stroke: #c41e1e !important;
+}
+
+/* 3. Dropdown Connection Gap Fix */
+.main-nav ul li.nav-item-dropdown {
+    padding-bottom: 20px;
+    /* Large invisible bridge directly on the LI */
+}
+
+.dropdown-menu {
+    top: 100%;
+    margin-top: -10px;
+    /* Pull into the padding bridge */
+}
+
+/* Global Navigation Overflow Safeties */
+.main-nav,
+.site-header,
+.header-container {
+    overflow: visible !important;
+}
+
+
+/* =========================================
+   10. MOBILE-FIRST RESPONSIVE ARCHITECTURE
+       (Tesla/BMW Inspired Standards)
+   ========================================= */
+
+/* Default Hide Mobile UI on Desktop */
+.mobile-menu-btn {
+    display: none !important;
+}
+
+body.no-scroll {
+    overflow: hidden !important;
+}
+
+/* -------------------------------------
+   Tablet & Medium Viewports (Max 1024px)
+   ------------------------------------- */
+@media (max-width: 1024px) {
+    .header-container {
+        padding: 0 40px !important;
+    }
+
+    /* Shrink Hero Dimensions Safely */
+    .hero-big-number img {
+        width: 350px !important;
+    }
+
+    .hero-title {
+        font-size: 50px !important;
+    }
+
+    .hero-description {
+        font-size: 16px !important;
+        width: 400px !important;
+    }
+
+    /* 2x2 Stats Grid */
+    .stats-grid {
+        gap: 20px !important;
+    }
+
+    /* Stack the split Trust Section */
+    .trust-container {
+        flex-direction: column-reverse !important;
+        gap: 50px !important;
+        padding: 0 40px !important;
+    }
+
+    .trust-left,
+    .trust-right {
+        width: 100% !important;
+        padding-right: 0 !important;
+    }
+
+    .trust-image-card {
+        height: 400px !important;
+    }
+
+    /* Constrain vertical height blowout */
+
+    /* Legacy Shrink */
+    .legacy-content-wrapper {
+        padding: 40px !important;
+    }
+
+    /* Directors 2-Column Grid */
+    .directors-container {
+        padding: 0 40px !important;
+    }
+
+    .directors-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 30px !important;
+    }
+
+    /* Constrain Testimonials Width */
+    .t-main-card {
+        width: 100% !important;
+        max-width: 700px !important;
+    }
+
+
+}
+
+/* -------------------------------------
+   Mobile & Smartphone Screens (Max 768px)
+   ------------------------------------- */
+@media (max-width: 768px) {
+
+    /* Universal Mobile Scaffolding */
+    body,
+    html {
+        overflow-x: hidden !important;
+    }
+
+    /* Stop accidental horizontal sliding */
+    section {
+        padding: 60px 20px !important;
+    }
+
+    .header-container,
+    .hero-content,
+    .stats-container,
+    .trust-container,
+    .legacy-container,
+    .directors-container,
+    .achievements-container,
+    .testimonials-container,
+    .footer-container {
+        padding: 0 25px !important;
+    }
+
+    /* === 1. Navigation Overlay === */
+    .mobile-menu-btn {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-around !important;
+        width: 32px !important;
+        height: 24px !important;
+        background: transparent !important;
+        border: none !important;
+        cursor: pointer !important;
+        z-index: 9999 !important;
+    }
+
+    .hamburger-line {
+        width: 100% !important;
+        height: 2px !important;
+        background: #fff !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        border-radius: 2px !important;
+    }
+
+    .mobile-menu-btn.active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px) !important;
+    }
+
+    .mobile-menu-btn.active .hamburger-line:nth-child(2) {
+        opacity: 0 !important;
+    }
+
+    .mobile-menu-btn.active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px) !important;
+    }
+
+    .main-nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: rgba(0, 0, 0, 0.45) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: flex-end !important;
+        flex-direction: row !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s !important;
+        z-index: 9998 !important;
+    }
+
+    .main-nav.active {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .main-nav>ul {
+        flex-direction: column !important;
+        text-align: left !important;
+        gap: 25px !important;
+        width: 320px !important;
+        max-width: 85vw !important;
+        height: 100vh !important;
+        background: #060b14 !important;
+        padding: 100px 30px 40px 30px !important;
+        transform: translateX(100%) !important;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: -15px 0 50px rgba(0, 0, 0, 0.6) !important;
+        overflow-y: auto !important;
+        display: flex !important;
+    }
+
+    .main-nav.active>ul {
+        transform: translateX(0) !important;
+    }
+
+    .main-nav>ul>li {
+        opacity: 0;
+        transform: translateX(30px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .main-nav.active>ul>li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .main-nav.active>ul>li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .main-nav.active>ul>li:nth-child(2) {
+        transition-delay: 0.15s;
+    }
+
+    .main-nav.active>ul>li:nth-child(3) {
+        transition-delay: 0.2s;
+    }
+
+    .main-nav.active>ul>li:nth-child(4) {
+        transition-delay: 0.25s;
+    }
+
+    .main-nav.active>ul>li:nth-child(5) {
+        transition-delay: 0.3s;
+    }
+
+    .main-nav.active>ul>li:nth-child(6) {
+        transition-delay: 0.35s;
+    }
+
+    .main-nav.active>ul>li:nth-child(7) {
+        transition-delay: 0.4s;
+    }
+
+    .main-nav ul li a {
+        font-size: 24px !important;
+        font-weight: 500 !important;
+        padding: 8px 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        color: #fff !important;
+    }
+
+    .main-nav ul li.nav-item-dropdown>a>svg {
+        position: static !important;
+        margin-left: 12px !important;
+        transform: none !important;
+    }
+
+    /* Mobile Sub-Dropdown format fix */
+    .dropdown-menu,
+    .sub-dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        margin-top: 10px !important;
+        display: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        padding-left: 20px !important;
+    }
+
+    .nav-item-dropdown.active>.dropdown-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        transform: none !important;
+    }
+
+    .dropdown-menu li a {
+        color: rgba(255, 255, 255, 0.8) !important;
+        justify-content: flex-start !important;
+        padding: 8px 0 !important;
+        font-size: 18px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+    }
+
+    .dropdown-menu li.nav-item-sub-dropdown>a>.r-arrow {
+        position: static !important;
+        margin-left: 12px !important;
+        transform: none !important;
+    }
+
+    /* === 2. Hero Stack === */
+    .hero-left {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding-top: 80px !important;
+    }
+
+    .hero-description {
+        width: 100% !important;
+        line-height: 1.6 !important;
+    }
+
+    .hero-big-number img {
+        width: 260px !important;
+    }
+
+    /* === 3. Metrics/Stats === */
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .stat-card {
+        padding: 40px 20px !important;
+        text-align: center !important;
+    }
+
+    /* === 4. History Vertical Ladder === */
+    .history-card {
+        width: 100% !important;
+        min-width: 100% !important;
+        border-right: none !important;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05) !important;
+        padding: 40px 20px !important;
+    }
+
+    .vertical-scroll-track {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+    }
+
+    .history-pin {
+        top: 30px !important;
+        left: 20px !important;
+        transform: none !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    /* === 5. Directors Single Column === */
+    .directors-header {
+        flex-direction: column !important;
+        text-align: left !important;
+        gap: 15px !important;
+    }
+
+    .directors-header-right {
+        max-width: 100% !important;
+        text-align: left !important;
+    }
+
+    .directors-grid {
+        grid-template-columns: 1fr !important;
+        gap: 25px !important;
+    }
+
+    /* === 6. Awards Mobile Formatting === */
+    .main-achievement-card {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .achievement-image-column {
+        width: 100% !important;
+        height: 250px !important;
+        border-radius: 20px 20px 0 0 !important;
+    }
+
+    .bottom-awards-row {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    /* === 7. Testimonials Layout === */
+    .t-main-card {
+        flex-direction: column !important;
+        height: auto !important;
+        border-radius: 16px !important;
+    }
+
+    .t-main-image {
+        width: 100% !important;
+        height: 280px !important;
+    }
+
+    .t-main-content {
+        padding: 40px 25px !important;
+        width: 100% !important;
+    }
+
+    .t-quote-text {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+    }
+
+    .footer-container {
+        padding: 40px 20px !important;
+        flex-direction: column !important;
+        gap: 40px !important;
+        text-align: center !important;
+    }
+}
+
+/* -------------------------------------
+   Small Mobile Viewports (Max 480px)
+   ------------------------------------- */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 28px !important;
+    }
+
+    .hero-big-number img {
+        width: 220px !important;
+    }
+
+    .hero-title {
+        font-size: 38px !important;
+    }
+
+    .stat-value {
+        font-size: 32px !important;
+    }
+
+    .trust-title {
+        font-size: 32px !important;
+    }
+
+    .legacy-heading {
+        font-size: 32px !important;
+    }
+
+    .directors-title {
+        font-size: 32px !important;
+    }
+
+    .t-name {
+        font-size: 20px !important;
+    }
+
+    .achievement-heading {
+        font-size: 24px !important;
+    }
+}
+
+
+/* =========================================
+   11. ULTIMATE RESPONSIVE LOCKDOWN (Fixes)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* Hard overrides for HTML widths */
+    html,
+    body {
+        overflow-x: hidden !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+    }
+
+    /* Target Every Section Wrapper precisely */
+    .site-header,
+    .hero-banner-section,
+    .stats-section,
+    .about-section,
+    .legacy-section,
+    .dealers-section,
+    .history-section,
+    .directors-section,
+    .achievements-section,
+    .testimonials-section,
+    .site-footer {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow: hidden !important;
+        /* Force internal containment */
+        box-sizing: border-box !important;
+    }
+
+    /* Padding Safe Zones */
+    .header-container,
+    .hero-content,
+    .stats-grid,
+    .trust-container,
+    .legacy-container,
+    .dealers-container,
+    .history-wrapper,
+    .directors-grid,
+    .achievements-section>div,
+    .testimonials-container,
+    .footer-container {
+
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 1. History Section Fix (The biggest culprit for horizontal bleeding) */
+    .horizontal-scroll-track {
+        display: flex !important;
+        flex-direction: column !important;
+        /* Overwrite the row natively! */
+        width: 100% !important;
+        min-width: 100% !important;
+        transform: none !important;
+        /* Overwrite JS translate3d horizontal math if any */
+        gap: 0 !important;
+    }
+
+    .history-card {
+        width: 100% !important;
+        min-width: 100% !important;
+        border-right: none !important;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05) !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 40px 20px !important;
+    }
+
+    /* 2. Trust Section Details */
+    .trust-container {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+    }
+
+    .trust-bottom-cards {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        /* Single column stats */
+        gap: 20px !important;
+    }
+
+    .trust-image-card {
+        height: 350px !important;
+    }
+
+    /* 3. Legacy Section Details */
+    .legacy-container {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .legacy-right {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        /* Stack image grid */
+    }
+
+    .l-img-1,
+    .l-img-2,
+    .l-img-3 {
+        height: 250px !important;
+    }
+
+    /* 5. Directors Grid */
+    .directors-header {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: left !important;
+    }
+
+    .directors-header-right {
+        max-width: 100% !important;
+    }
+
+    .directors-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        /* 1 col */
+    }
+
+    /* 6. Achievements Section */
+    .achievements-header {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: left !important;
+    }
+
+    .main-achievement-card {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        width: 100% !important;
+    }
+
+    .achievement-content-column {
+        padding: 40px 20px !important;
+        width: 100% !important;
+    }
+
+    .bottom-awards-row {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* 7. Testimonials Section */
+    .testimonial-carousel {
+        display: flex !important;
+        flex-direction: column !important;
+        position: relative !important;
+    }
+
+    .t-main-card {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    .t-main-image {
+        width: 100% !important;
+        height: 450px !important;
+        background-color: #fafbfc !important;
+    }
+
+    .t-main-image img {
+        object-fit: contain !important;
+        object-position: center top !important;
+        width: 100% !important;
+        height: 100% !important;
+        transform: scale(1) !important;
+    }
+
+    .t-main-content {
+        width: 100% !important;
+        padding: 40px 20px !important;
+    }
+
+
+    .t-side-card:hover {
+        transform: none !important;
+    }
+
+    .t-side-card {
+        display: flex !important;
+        position: absolute !important;
+        top: 150px !important;
+        /* Center precisely against the 450px image */
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 50% !important;
+        background: rgba(0, 0, 0, 0.7) !important;
+        z-index: 50 !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .t-side-card img {
+        display: none !important;
+    }
+
+    .t-arrow-overlay {
+        position: relative !important;
+        top: 0 !important;
+        transform: none !important;
+        height: 100% !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .t-prev {
+        left: 10px !important;
+    }
+
+    .t-next {
+        right: 10px !important;
+    }
+
+    /* 8. Footer Section */
+    .footer-container {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 40px !important;
+    }
+
+    .footer-column {
+        width: 100% !important;
+    }
+
+    .footer-bottom {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 20px !important;
+    }
+
+    /* 9. Hero Adjustments */
+    .hero-big-number img {
+        width: 250px !important;
+    }
+
+    .hero-title {
+        font-size: 44px !important;
+    }
+
+    .hero-left {
+        padding-top: 100px !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .trust-title,
+    .legacy-heading,
+    .directors-title {
+        font-size: 32px !important;
+    }
+
+    .hero-title {
+        font-size: 38px !important;
+    }
+
+    .hero-big-number img {
+        width: 220px !important;
+    }
+}
+
+
+/* =========================================
+   14. MOBILE OVERSIZED TEXT & HEIGHT FIXES
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. Global Typography Shrink */
+    h1,
+    h2,
+    h3,
+    h4,
+    .hero-title,
+    .section-title,
+    .legacy-heading,
+    .trust-title,
+    .directors-title,
+    .achievement-heading {
+        font-size: 30px !important;
+        /* Cap absolute max size */
+        line-height: 1.2 !important;
+        word-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+
+    p,
+    .hero-description,
+    .stat-text,
+    .trust-desc,
+    .legacy-desc,
+    .t-quote-text,
+    .footer-text {
+        font-size: 15px !important;
+        line-height: 1.5 !important;
+    }
+
+
+    .about-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 8px !important;
+    }
+
+    .history-cards-header h2 {
+        font-size: 30px !important;
+    }
+
+    .directors-header-left {
+        text-align: center !important;
+    }
+
+
+
+    /* 4. Fix other potential massive elements */
+    .hero-big-number img {
+        width: 180px !important;
+        /* Very safe hero width */
+    }
+
+    .trust-image-card,
+    .t-main-image {
+        height: 300px !important;
+        /* Clamp extreme heights everywhere */
+        max-height: 300px !important;
+    }
+}
+
+@media (max-width: 380px) {
+
+    h1,
+    h2,
+    h3,
+    .section-title,
+    .dealers-title {
+        font-size: 24px !important;
+    }
+}
+
+
+
+
+/* =========================================
+   RESPONSIVE DEALERS SECTION (Mobile Swipe Slider)
+   ========================================= */
+.dealers-section {
+    container-type: inline-size;
+    container-name: dealers;
+    /* Allow slider to bleed right */
+    padding-right: 0 !important;
+    overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+    .dealers-container {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 15px !important;
+        padding-bottom: 20px !important;
+        padding-left: clamp(20px, 4vw, 40px) !important;
+        padding-right: clamp(20px, 4vw, 40px) !important;
+        height: auto !important;
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    .dealers-container::-webkit-scrollbar {
+        display: none !important;
+        /* Safari and Chrome */
+    }
+
+    .dealer-panel {
+        /* On phones (small cqi), show mostly 1 card, let next peak. On tablets, maybe 2 cards peak. */
+        min-width: clamp(280px, 85cqi, 400px) !important;
+        height: clamp(350px, 50cqi, 450px) !important;
+        flex: 0 0 auto !important;
+        margin: 0 !important;
+        scroll-snap-align: center !important;
+        border-radius: clamp(12px, 2cqi, 20px) !important;
+        opacity: 1 !important;
+        transform: none !important;
+        position: relative !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .dealer-panel .dealers-title,
+    .dealer-panel:not(.active) .dealers-title {
+        opacity: 1 !important;
+        visibility: visible !important;
+        top: clamp(15px, 2cqi, 25px) !important;
+        left: clamp(15px, 2cqi, 25px) !important;
+        font-size: clamp(1.25rem, 5cqi, 1.75rem) !important;
+        writing-mode: horizontal-tb !important;
+        transform: none !important;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+        color: #ffffff !important;
+        z-index: 10 !important;
+    }
+
+    .dealer-panel .dealer-info,
+    .dealer-panel:not(.active) .dealer-info {
+        opacity: 1 !important;
+        visibility: visible !important;
+        bottom: clamp(15px, 2cqi, 25px) !important;
+        left: clamp(15px, 2cqi, 25px) !important;
+        transform: none !important;
+        z-index: 10 !important;
+        right: clamp(15px, 2cqi, 25px) !important;
+        padding: 0 !important;
+    }
+
+    .dealer-panel .dealer-info h3 {
+        font-size: clamp(1.8rem, 6cqi, 2.5rem) !important;
+        margin-bottom: clamp(4px, 1cqi, 8px) !important;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    .dealer-panel .dealer-info p,
+    .dealer-panel:not(.active) .dealer-info p {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        font-size: clamp(0.9rem, 3.5cqi, 1.1rem) !important;
+        color: rgba(255, 255, 255, 0.95) !important;
+        white-space: normal !important;
+        margin-bottom: clamp(10px, 2cqi, 15px) !important;
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    .dealer-panel .dealer-line,
+    .dealer-panel:not(.active) .dealer-line {
+        height: 3px !important;
+        width: 100% !important;
+        max-width: 60px !important;
+        background-color: #c41e1e !important;
+        margin-top: 0 !important;
+    }
+
+    .dealer-panel::after {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%) !important;
+        opacity: 1 !important;
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE LUXURY ACHIEVEMENTS (MOBILE)
+   ========================================= */
+@media (max-width: 1024px) {
+
+    /* 1. Cinematic Container */
+    .achievements-section {
+        padding: 60px 20px !important;
+        background-color: #0b1120 !important;
+        /* Deep dark background */
+    }
+
+    .achievements-header {
+        text-align: center !important;
+        margin-bottom: 40px !important;
+    }
+
+    .achievements-title {
+        color: #ffffff !important;
+        font-size: clamp(2rem, 8vw, 2.5rem) !important;
+        letter-spacing: -1px !important;
+    }
+
+    .achievements-subtitle {
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    .main-achievement-card {
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+        height: 550px !important;
+        overflow: hidden !important;
+        border-radius: 24px !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* 2. Full-bleed Background Image */
+    .achievement-image-column {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 1 !important;
+        max-width: 100% !important;
+        border-radius: 0 !important;
+    }
+
+    .achievement-image-column img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+
+    /* Gradient overlay to ensure exquisite legibility of overlaid white text */
+    .main-achievement-card::after {
+        content: '' !important;
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 80% !important;
+        background: linear-gradient(to top, rgba(11, 26, 47, 0.95) 0%, rgba(11, 26, 47, 0.7) 40%, transparent 100%) !important;
+        z-index: 2 !important;
+        pointer-events: none !important;
+    }
+
+    /* 3. Overlaid Typography & Content Space */
+    .achievement-content-column {
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        /* Take full height but flex block pushes bottom */
+        z-index: 5 !important;
+        padding: 40px 30px 40px 30px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-end !important;
+        background: transparent !important;
+    }
+
+    .achievement-heading {
+        color: #ffffff !important;
+        font-size: 28px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.5px !important;
+        line-height: 1.1 !important;
+        margin-bottom: 12px !important;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    .achievement-desc {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+        margin-bottom: 30px !important;
+        max-width: 95% !important;
+    }
+
+    /* 4. Glassmorphism Featured Badge */
+    .feat-badge {
+        position: absolute !important;
+        top: 25px !important;
+        left: 25px !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        color: #ffffff !important;
+        padding: 6px 14px !important;
+        font-size: 10px !important;
+        border-radius: 20px !important;
+        z-index: 10 !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .main-achievement-card:hover .feat-badge {
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: #ffffff !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15) !important;
+    }
+
+    /* 5. Modern Indicator Track replacing generic round dots */
+    .achievement-dots {
+        margin-top: 0 !important;
+        /* Using margin-bottom on desc instead */
+        display: flex !important;
+        gap: 8px !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+    }
+
+    .achievement-dots .dot {
+        width: 32px !important;
+        height: 3px !important;
+        border-radius: 4px !important;
+        background: rgba(255, 255, 255, 0.2) !important;
+        transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+        cursor: pointer !important;
+    }
+
+    .achievement-dots .dot.active {
+        width: 48px !important;
+        background: #ffffff !important;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important;
+    }
+}
+
+
+/* =========================================
+   16. MOBILE OVERFLOW & TYPOGRAPHY FIXES
+   ========================================= */
+@media (max-width: 1024px) {
+
+    /* Fix 1: Stop 'Determination.' title from blowing past boundaries */
+    .about-title {
+        font-size: clamp(28px, 8vw, 38px) !important;
+        line-height: 1.1 !important;
+        word-wrap: break-word !important;
+        hyphens: auto !important;
+        margin-bottom: 25px !important;
+    }
+
+    /* Fix 2: Prevent fixed-height containers from clipping scaled text */
+    .trust-section,
+    .about-section,
+    .trust-left,
+    .trust-right,
+    .trust-stat-card {
+        height: auto !important;
+        min-height: 0 !important;
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+
+    /* Ensure trust cards actually stack properly on very thin phones */
+    .trust-bottom-cards {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+
+    /* Fix 3: Decompress Award Cards bottom row */
+    .award-card {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 30px 20px !important;
+        gap: 0 !important;
+    }
+
+    .award-logo {
+        margin-right: 0 !important;
+        margin-bottom: 15px !important;
+        flex: 0 0 80px !important;
+        /* Smaller logo footprint */
+    }
+
+    .award-logo img {
+        max-width: 80px !important;
+    }
+
+    .award-text h4 {
+        font-size: 18px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 8px !important;
+    }
+
+    .award-text p {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
+    }
+}
+
+
+/* =========================================
+   17. HERO SECTION MOBILE HEIGHT LIMITS
+   ========================================= */
+@media (max-width: 768px) {
+    .hero-banner-section {
+        height: auto !important;
+        min-height: 440px !important;
+        /* Provide a safe baseline but not massive */
+        padding-top: 140px !important;
+        /* Space for absolute header */
+        padding-bottom: 80px !important;
+        /* Balanced bottom breathing room */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+
+    .hero-content {
+        height: auto !important;
+        align-items: flex-start !important;
+    }
+}
+
+
+/* =========================================
+   18. MOBILE NAVBAR & HERO POLISH
+   ========================================= */
+@media (max-width: 480px) {
+
+    /* Fix the rogue 480px query that stacked the navigation */
+    .header-container {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 25px !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Responsive image scaling for "25" */
+    .hero-big-number img {
+        width: clamp(140px, 55vw, 240px) !important;
+    }
+
+    /* Refine whitespace so text sits beautifully */
+    .hero-banner-section {
+        padding-top: 120px !important;
+        padding-bottom: 60px !important;
+    }
+}
+
+
+/* =========================================
+   19. FOOTER MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 60px 20px !important;
+    }
+
+    .footer-top {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 30px !important;
+    }
+
+    .footer-middle {
+        flex-direction: column !important;
+        gap: 40px !important;
+        text-align: center !important;
+    }
+
+    .brand-col {
+        flex: 0 0 100% !important;
+        padding-right: 0 !important;
+        text-align: center !important;
+    }
+
+    .brand-desc {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    .links-col {
+        flex: 0 0 100% !important;
+        text-align: center !important;
+    }
+
+    .footer-bottom {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+        gap: 20px !important;
+        text-align: center !important;
+        align-items: center !important;
+    }
+}
+
+
+/* =========================================
+   20. HERO DARK OVERLAY (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* Replace white gradient with full-width dark overlay */
+    .hero-overlay {
+        background: rgba(0, 0, 0, 0.65) !important;
+        width: 100% !important;
+    }
+
+    /* Change text to white for contrast against dark overlay */
+    .hero-legacy-text,
+    .hero-description {
+        color: #ffffff !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+    }
+}
+
+/* =========================================
+   21. ACHIEVEMENT SECTION MOBILE COMPRESSION
+   ========================================= */
+@media (max-width: 768px) {
+    .achievement-desc {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 4 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        margin-bottom: 20px !important;
+        min-height: auto !important;
+    }
+
+    .achievement-heading {
+        font-size: 20px !important;
+        margin-bottom: 10px !important;
+        min-height: auto !important;
+    }
+
+    .achievement-content-column {
+        padding: 25px 20px !important;
+    }
+
+    .main-achievement-card {
+        max-height: none !important;
+    }
+}
