@@ -672,39 +672,100 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* =========================================
-   10. Mobile Responsiveness Engine
+   10. Mobile App Sidebar Engine
    ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
-    // A. Hamburger Menu Toggle
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const mainNav = document.querySelector('.main-nav');
+    const hamburgerBtn  = document.getElementById('mobileMenuBtn');
+    const sidebar       = document.getElementById('mobileSidebar');
+    const backdrop      = document.getElementById('sidebarBackdrop');
+    const closeBtn      = document.getElementById('sidebarClose');
+    const sectorsToggle = document.getElementById('msbSectors');
+    const sectorsMenu   = document.getElementById('msbSectorsMenu');
 
-    if (mobileBtn && mainNav) {
-        mobileBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mobileBtn.classList.toggle('active');
-            mainNav.classList.toggle('active');
-            document.body.classList.toggle('no-scroll');
+    if (!hamburgerBtn || !sidebar || !backdrop) return;
+
+    // ── Open & Close helpers ──────────────────────────────
+    const openSidebar = () => {
+        hamburgerBtn.classList.add('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
+        sidebar.classList.add('open');
+        sidebar.setAttribute('aria-hidden', 'false');
+        backdrop.classList.add('open');
+        document.body.classList.add('sidebar-open');
+    };
+
+    const closeSidebar = () => {
+        hamburgerBtn.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        sidebar.classList.remove('open');
+        sidebar.setAttribute('aria-hidden', 'true');
+        backdrop.classList.remove('open');
+        document.body.classList.remove('sidebar-open');
+    };
+
+    // ── Triggers ──────────────────────────────────────────
+    hamburgerBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+    });
+
+    closeBtn && closeBtn.addEventListener('click', closeSidebar);
+    backdrop.addEventListener('click', closeSidebar);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) closeSidebar();
+    });
+
+    // ── Sectors sub-menu toggle ───────────────────────────
+    if (sectorsToggle && sectorsMenu) {
+        sectorsToggle.addEventListener('click', () => {
+            const isOpen = sectorsMenu.classList.contains('open');
+            sectorsMenu.classList.toggle('open', !isOpen);
+            sectorsToggle.classList.toggle('sub-open', !isOpen);
         });
-
-        // Close drawer when clicking ambient backdrop
-        mainNav.addEventListener('click', (e) => {
-            if (e.target === mainNav) {
-                mobileBtn.classList.remove('active');
-                mainNav.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            }
-        });
-
-        // Mobile Dropdown toggler
-        const navDropdown = document.querySelector('.nav-item-dropdown');
-        if (navDropdown && window.innerWidth <= 768) {
-            navDropdown.addEventListener('click', (e) => {
-                if (e.target.tagName !== 'A' || e.target.getAttribute('href') === '#') {
-                    e.preventDefault();
-                    navDropdown.classList.toggle('active');
-                }
-            });
-        }
     }
+
+    // ── Active item highlight ─────────────────────────────
+    document.querySelectorAll('.msb-nav-item[data-index]').forEach(item => {
+        item.addEventListener('click', function () {
+            document.querySelectorAll('.msb-nav-item').forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+            // Close sidebar after short delay for visual feedback
+            setTimeout(closeSidebar, 220);
+        });
+    });
+});
+
+/* =========================================
+   11. Floating Header Scroll Logic
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const siteHeader = document.querySelector('.site-header');
+    if (!siteHeader) return;
+
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        // Add new pill style past 150px
+        if (currentScrollY > 150) {
+            siteHeader.classList.add('scrolled');
+            
+            if (currentScrollY > lastScrollY) {
+                // Scrolling down -> hide header
+                siteHeader.classList.add('hidden');
+            } else {
+                // Scrolling up -> show header
+                siteHeader.classList.remove('hidden');
+            }
+        } else {
+            // Near top -> revert to original hero header
+            siteHeader.classList.remove('scrolled');
+            siteHeader.classList.remove('hidden');
+        }
+        
+        lastScrollY = currentScrollY;
+    }, { passive: true });
 });
