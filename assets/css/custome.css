@@ -1386,9 +1386,7 @@ ul {
 
 /* ── Tablet: side cards become floating pill buttons ── */
 @media (max-width: 1220px) {
-    .testimonials-container {
-        padding: 0 20px;
-    }
+
 
     .testimonial-carousel {
         position: relative;
@@ -1947,6 +1945,13 @@ ul {
         font-size: 30px;
     }
 
+
+
+
+    .testimonials-container {
+        padding: 0 0 0 0 !important;
+    }
+
     .main-nav ul {
         gap: 15px;
     }
@@ -1986,6 +1991,10 @@ ul {
         padding: 80px 0;
     }
 
+    .testimonials-container {
+        padding: 0px 0px !important;
+    }
+
     .about-bottom-grid {
         grid-template-columns: 1fr;
     }
@@ -2001,6 +2010,13 @@ ul {
         gap: 15px;
         padding: 10px 10px !important;
     }
+
+
+    .testimonials-container {
+        padding: 0 0 0 0 !important;
+    }
+
+
 
     .site-header.scrolled .header-container {
         padding: 10px 20px !important;
@@ -3210,13 +3226,13 @@ body.no-scroll {
 
     /* Stop accidental horizontal sliding */
     section {
-        padding: 60px 20px !important;
+        padding: 60px 40px !important;
     }
 
     .header-container,
     .hero-content,
     .stats-container,
-    .trust-container,
+
     .legacy-container,
     .directors-container,
     .achievements-container,
@@ -3224,6 +3240,11 @@ body.no-scroll {
     .footer-container {
         padding: 0 25px !important;
     }
+
+    .trust-container {
+        padding: 0 !important;
+    }
+
 
     /* === 1. Navigation Overlay === */
     .mobile-menu-btn {
@@ -4020,7 +4041,7 @@ body.no-scroll {
 
     /* 1. Cinematic Container */
     .achievements-section {
-        padding: 60px 20px !important;
+        padding: 60px 40px !important;
         background-color: #0b1120 !important;
         /* Deep dark background */
     }
@@ -4208,6 +4229,23 @@ body.no-scroll {
         text-align: center !important;
         padding: 30px 20px !important;
         gap: 0 !important;
+    }
+
+
+    .about-container {
+
+        padding: 100px 60px !important;
+    }
+
+
+    .directors-section {
+        padding: 100px 60px;
+
+    }
+
+
+    .testimonials-container {
+        padding: 100px 60px !important;
     }
 
     .award-logo {
@@ -5092,7 +5130,7 @@ body.no-scroll {
     }
 
     .about-container {
-        padding: 0 20px !important;
+        padding: 0 40px !important;
     }
 
     /* ── Top text grid → single column ── */
@@ -5147,6 +5185,12 @@ body.no-scroll {
     /* ── Right column ── */
     .about-text-right {
         padding-top: 0 !important;
+    }
+
+
+
+    .testimonials-container {
+        padding: 0px 0px !important;
     }
 
     .about-text-preview p {
