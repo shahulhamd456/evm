@@ -470,6 +470,22 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+/* =========================================
+   Dark Mode — Toggle & Init
+   ========================================= */
+function toggleDarkMode() {
+    const html     = document.documentElement;
+    const isDark   = html.getAttribute('data-theme') === 'dark';
+    const newTheme = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('evm-theme', newTheme);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const headerBtn = document.getElementById('darkToggleBtn');
+    if (headerBtn) headerBtn.addEventListener('click', toggleDarkMode);
+});
+
 
 /* =========================================
    7. Framer Smooth Scroll & Reveals

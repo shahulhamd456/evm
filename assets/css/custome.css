@@ -1,4 +1,56 @@
 /* ===========================
+   Theme Tokens — Light & Dark
+   =========================== */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --bg-card: #ffffff;
+    --bg-card-2: #f8f8f8;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4b5563;
+    --text-muted: #888888;
+    --border: #e5e5e5;
+    --border-dark: #d0d0d0;
+    --accent: #c41e1e;
+    --accent-hover: #a81818;
+    --shadow-sm: rgba(0, 0, 0, 0.06);
+    --shadow-md: rgba(0, 0, 0, 0.12);
+    --shadow-lg: rgba(0, 0, 0, 0.20);
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --header-border: rgba(0, 0, 0, 0.08);
+    --overlay: rgba(255, 255, 255, 0.85);
+}
+
+html[data-theme="dark"] {
+    --bg-primary: #0e0e0e;
+    --bg-secondary: #161616;
+    --bg-card: #1c1c1c;
+    --bg-card-2: #222222;
+    --text-primary: #ffffff;
+    --text-secondary: #d4d4d4;
+    --text-muted: #a3a3a3;
+    --border: #2c2c2c;
+    --border-dark: #333333;
+    --accent: #e03535;
+    --accent-hover: #c41e1e;
+    --shadow-sm: rgba(0, 0, 0, 0.30);
+    --shadow-md: rgba(0, 0, 0, 0.45);
+    --shadow-lg: rgba(0, 0, 0, 0.60);
+    --header-bg: rgba(14, 14, 14, 0.97);
+    --header-border: rgba(255, 255, 255, 0.06);
+    --overlay: rgba(14, 14, 14, 0.85);
+}
+
+/* Smooth theme transitions on all elements */
+*,
+*::before,
+*::after {
+    transition-property: background-color, color, border-color, box-shadow, fill, stroke;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+}
+
+/* ===========================
    Reset & Base Styles
    =========================== */
 *,
@@ -89,7 +141,7 @@ ul {
 .main-nav ul li a {
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    color: #111;
     font-family: 'Inter', sans-serif;
     transition: all 0.3s ease;
     opacity: 0.9;
@@ -97,7 +149,7 @@ ul {
 
 .main-nav ul li a:hover,
 .main-nav ul li a.active {
-    color: #fff;
+    color: #e53935;
     opacity: 1;
 }
 
@@ -112,7 +164,7 @@ ul {
 .header-contact-btn {
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    color: #111;
     font-family: 'Inter', sans-serif;
     transition: all 0.3s ease;
     opacity: 0.9;
@@ -258,7 +310,7 @@ ul {
     position: absolute;
     top: 0;
     left: 0;
-    width: 65%;
+    width: 100%;
     height: 100%;
     z-index: 2;
     background: linear-gradient(to right,
@@ -346,17 +398,15 @@ ul {
    =========================== */
 .about-section {
     height: 830px;
-    display: flex;
-    align-items: center;
+
     background: #ffffff;
     position: relative;
     overflow: hidden;
 }
 
 .about-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 60px;
+
+    padding: 100px 120px;
 }
 
 /* Top Text Grid */
@@ -645,7 +695,7 @@ ul {
     display: flex;
 
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 0 120px;
     width: 100%;
     height: 600px;
     gap: 0px;
@@ -780,7 +830,7 @@ ul {
    Directors Section
    =========================== */
 .directors-section {
-    padding: 100px 80px;
+    padding: 100px 120px;
     background-color: #ffffff;
 }
 
@@ -1547,7 +1597,7 @@ ul {
    =========================== */
 .site-footer {
     background-color: #111111;
-    padding: 80px 40px;
+    padding: 80px 120px;
     font-family: 'Inter', sans-serif;
     color: #ffffff;
 }
@@ -3022,7 +3072,7 @@ html.lenis body {
     display: inline-block !important;
     min-width: 14px;
     min-height: 14px;
-    stroke: #ffffff !important;
+    stroke: #000000 !important;
     /* Force explicit white fill against dark overlay */
     stroke-width: 3px !important;
     margin-left: 6px;
@@ -5143,4 +5193,671 @@ body.no-scroll {
         font-size: 11px !important;
         letter-spacing: 2px !important;
     }
+}
+
+
+/* =========================================
+   DARK MODE — Complete Section Overrides
+   html[data-theme="dark"]
+   ========================================= */
+
+/* ── Base ── */
+html[data-theme="dark"] body {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* ── Hero Banner ── */
+html[data-theme="dark"] .hero-overlay {
+    background: linear-gradient(to right, #191717 28%, rgba(102, 102, 102, 0.1) 100%) !important;
+}
+
+html[data-theme="dark"] .hero-legacy-text,
+html[data-theme="dark"] .hero-description {
+    color: #ffffff !important;
+}
+
+/* ── Dark Mode Toggle Button ── */
+.dark-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    color: var(--text-primary);
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    line-height: 1;
+}
+
+.dark-toggle:hover {
+    background: var(--bg-secondary);
+    transform: rotate(20deg);
+}
+
+.dark-toggle .icon-moon {
+    display: block;
+}
+
+.dark-toggle .icon-sun {
+    display: none;
+}
+
+/* In dark mode — button must be clearly visible on dark header */
+html[data-theme="dark"] .dark-toggle {
+    border-color: rgba(255, 255, 255, 0.45) !important;
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme="dark"] .dark-toggle:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+html[data-theme="dark"] .dark-toggle .icon-moon {
+    display: none;
+}
+
+html[data-theme="dark"] .dark-toggle .icon-sun {
+    display: block;
+}
+
+/* Sidebar dark toggle */
+.msb-dark-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+}
+
+.msb-dark-toggle .toggle-track {
+    width: 40px;
+    height: 22px;
+    background: var(--border);
+    border-radius: 100px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.msb-dark-toggle .toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="dark"] .msb-dark-toggle .toggle-track {
+    background: var(--accent);
+}
+
+html[data-theme="dark"] .msb-dark-toggle .toggle-thumb {
+    transform: translateX(18px);
+}
+
+/* ─────────────────────────────────────
+   HEADER
+───────────────────────────────────── */
+
+html[data-theme="dark"] .site-header.scrolled .header-container {
+    background: #1c1c1c !important;
+    border-color: var(--header-border) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .main-nav a {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .main-nav a:hover {
+    color: var(--accent) !important;
+}
+
+html[data-theme="dark"] .dropdown-menu,
+html[data-theme="dark"] .sub-dropdown-menu {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: 0 8px 24px var(--shadow-md) !important;
+}
+
+html[data-theme="dark"] .dropdown-menu a,
+html[data-theme="dark"] .sub-dropdown-menu a {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .dropdown-menu a:hover,
+html[data-theme="dark"] .sub-dropdown-menu a:hover {
+    background: var(--bg-secondary) !important;
+    color: var(--accent) !important;
+}
+
+
+
+html[data-theme="dark"] .trust-left {
+    background: #061736 !important;
+}
+
+
+html[data-theme="dark"] .header-contact-btn {
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    color: #fff !important;
+}
+
+html[data-theme="dark"] .header-contact-btn:hover {
+    background: #fff !important;
+    color: #000 !important;
+}
+
+html[data-theme="dark"] .hamburger-line {
+    background: #fff !important;
+}
+
+/* ─────────────────────────────────────
+   MOBILE SIDEBAR
+───────────────────────────────────── */
+html[data-theme="dark"] .mobile-sidebar {
+    background: #111 !important;
+}
+
+html[data-theme="dark"] .msb-header {
+    border-bottom-color: var(--border) !important;
+}
+
+html[data-theme="dark"] .msb-brand-name {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .msb-tagline {
+    color: var(--text-muted) !important;
+}
+
+html[data-theme="dark"] .msb-close {
+    color: var(--text-secondary) !important;
+    background: var(--bg-card-2) !important;
+}
+
+html[data-theme="dark"] .msb-promo {
+    background: #1e1e1e !important;
+    border-color: var(--border) !important;
+}
+
+html[data-theme="dark"] .msb-nav-item {
+    color: var(--text-primary) !important;
+    border-bottom-color: var(--border) !important;
+}
+
+html[data-theme="dark"] .msb-nav-item:hover,
+html[data-theme="dark"] .msb-nav-item.active {
+    background: var(--bg-card-2) !important;
+}
+
+html[data-theme="dark"] .msb-sub-menu {
+    background: #0e0e0e !important;
+}
+
+html[data-theme="dark"] .msb-sub-item {
+    color: var(--text-secondary) !important;
+    border-bottom-color: var(--border) !important;
+}
+
+html[data-theme="dark"] .msb-divider {
+    border-color: var(--border) !important;
+}
+
+html[data-theme="dark"] .msb-footer {
+    border-top-color: var(--border) !important;
+}
+
+html[data-theme="dark"] .msb-social-btn {
+    background: var(--bg-card-2) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border) !important;
+}
+
+html[data-theme="dark"] .msb-stats-num {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .msb-stats-label {
+    color: var(--text-muted) !important;
+}
+
+html[data-theme="dark"] .msb-copyright {
+    color: var(--text-muted) !important;
+}
+
+/* ─────────────────────────────────────
+   TRUST / HERITAGE SECTION
+───────────────────────────────────── */
+html[data-theme="dark"] .trust-section {
+    background: var(--bg-primary) !important;
+}
+
+/* White stat card → dark */
+html[data-theme="dark"] .trust-stat-card.white-card {
+    background: var(--bg-card) !important;
+    box-shadow: 0 10px 30px var(--shadow-md) !important;
+}
+
+html[data-theme="dark"] .trust-stat-card.white-card .trust-stat {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .trust-stat-card.white-card .trust-stat-desc {
+    color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] .trust-stat-card.white-card .trust-icon {
+    background: var(--bg-card-2) !important;
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .trust-stat-card.white-card .outline-btn {
+    border-color: var(--border) !important;
+    color: var(--text-secondary) !important;
+}
+
+/* ─────────────────────────────────────
+   ABOUT SECTION
+───────────────────────────────────── */
+html[data-theme="dark"] .about-section {
+    background: var(--bg-primary) !important;
+}
+
+html[data-theme="dark"] .about-subtitle {
+    color: var(--accent) !important;
+}
+
+html[data-theme="dark"] .about-title {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .about-highlight {
+    border-left-color: var(--accent) !important;
+}
+
+html[data-theme="dark"] .about-highlight p,
+html[data-theme="dark"] .about-highlight-preview {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .about-text-right p,
+html[data-theme="dark"] .about-expanded-content p {
+    color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] .about-text-preview p {
+    color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] .about-card {
+    background: var(--bg-card) !important;
+}
+
+html[data-theme="dark"] .about-card.img-card {
+    background: var(--bg-card-2) !important;
+}
+
+html[data-theme="dark"] .about-card.red-badge-card {
+    background: var(--accent) !important;
+}
+
+html[data-theme="dark"] .read-more-btn,
+html[data-theme="dark"] .read-less-btn {
+    color: var(--text-muted) !important;
+    border-bottom-color: var(--border) !important;
+}
+
+/* ─────────────────────────────────────
+   HISTORY / CARDS SECTION
+───────────────────────────────────── */
+html[data-theme="dark"] .history-section,
+html[data-theme="dark"] .history-cards-section {
+    background: var(--bg-primary) !important;
+}
+
+html[data-theme="dark"] .history-normal,
+html[data-theme="dark"] .history-underline {
+    color: var(--text-primary) !important;
+}
+
+/* History Card Slider */
+
+
+html[data-theme="dark"] .hc-year {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .hc-text p {
+    color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] .hc-line {
+    background: var(--border) !important;
+}
+
+html[data-theme="dark"] .hc-dot {
+    background: var(--accent) !important;
+    border-color: var(--bg-card) !important;
+}
+
+html[data-theme="dark"] .history-nav {
+    background: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border) !important;
+}
+
+html[data-theme="dark"] .history-nav:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-color: var(--accent) !important;
+}
+
+/* Timeline node labels (SVG-based history) */
+html[data-theme="dark"] .node-year {
+    background: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .node-text {
+    color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] .node-image-wrapper {
+    border-color: var(--border) !important;
+    background: var(--bg-card) !important;
+}
+
+/* ─────────────────────────────────────
+   DEALERS SECTION
+───────────────────────────────────── */
+html[data-theme="dark"] .dealers-section {
+    background: #0e0e0e !important;
+}
+
+
+
+html[data-theme="dark"] .dealer-info h3,
+html[data-theme="dark"] .dealer-info p {
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .dealer-info h3 span {
+    color: var(--accent) !important;
+}
+
+/* ─────────────────────────────────────
+   DIRECTORS SECTION
+───────────────────────────────────── */
+html[data-theme="dark"] .directors-section {
+    background: var(--bg-primary) !important;
+}
+
+html[data-theme="dark"] .directors-title {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .directors-subtitle {
+    color: var(--accent) !important;
+}
+
+html[data-theme="dark"] .directors-header-right {
+    border-left-color: var(--border) !important;
+}
+
+html[data-theme="dark"] .directors-header-right p {
+    color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] .director-card {
+    background: var(--bg-card) !important;
+    box-shadow: 0 15px 40px var(--shadow-md) !important;
+}
+
+html[data-theme="dark"] .director-info {
+    background: var(--bg-card) !important;
+}
+
+html[data-theme="dark"] .director-image {
+    background: var(--bg-card-2) !important;
+}
+
+html[data-theme="dark"] .director-name {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .director-role {
+    color: var(--accent) !important;
+}
+
+html[data-theme="dark"] .director-tag {
+    color: var(--text-muted) !important;
+}
+
+html[data-theme="dark"] .info-top {
+    border-left-color: var(--accent) !important;
+}
+
+/* ─────────────────────────────────────
+   ACHIEVEMENTS / AWARDS SECTION
+───────────────────────────────────── */
+html[data-theme="dark"] .achievements-section {
+    background: var(--bg-primary) !important;
+}
+
+html[data-theme="dark"] .achievements-title {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .achievements-subtitle {
+    color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] .main-achievement-card {
+    background: var(--bg-card) !important;
+    border-color: var(--border) !important;
+    box-shadow: 0 10px 40px var(--shadow-md) !important;
+}
+
+html[data-theme="dark"] .achievement-content-column {
+    background: var(--bg-card) !important;
+}
+
+html[data-theme="dark"] .achievement-heading {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .achievement-desc {
+    color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] .feat-badge {
+    background: var(--bg-card-2) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 4px 15px var(--shadow-md) !important;
+}
+
+/* Bottom award cards */
+html[data-theme="dark"] .award-card {
+    background: var(--bg-card) !important;
+    border-color: var(--border) !important;
+    box-shadow: 0 10px 30px var(--shadow-md) !important;
+}
+
+html[data-theme="dark"] .award-text h4 {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .award-text p {
+    color: var(--text-secondary) !important;
+}
+
+/* Dots */
+html[data-theme="dark"] .dot {
+    background: #444 !important;
+}
+
+html[data-theme="dark"] .dot.active {
+    background: var(--accent) !important;
+}
+
+/* ─────────────────────────────────────
+   TESTIMONIALS SECTION
+───────────────────────────────────── */
+html[data-theme="dark"] .testimonials-section {
+    background: var(--bg-primary) !important;
+}
+
+html[data-theme="dark"] .testimonials-title {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .testimonials-subtitle {
+    color: var(--accent) !important;
+}
+
+html[data-theme="dark"] .testimonials-line {
+    background: var(--accent) !important;
+}
+
+html[data-theme="dark"] .t-main-card {
+    background: var(--bg-card) !important;
+    box-shadow: 0 20px 50px var(--shadow-md) !important;
+}
+
+html[data-theme="dark"] .t-main-content {
+    background: var(--bg-card) !important;
+}
+
+html[data-theme="dark"] .t-quote-text {
+    color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] .t-name {
+    color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .t-role {
+    color: var(--text-muted) !important;
+}
+
+/* Tablet pill nav buttons */
+html[data-theme="dark"] .t-side-card {
+    background: var(--bg-card) !important;
+    box-shadow: 0 4px 16px var(--shadow-md) !important;
+}
+
+html[data-theme="dark"] .t-side-card .t-arrow-overlay svg {
+    stroke: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] .t-side-card:hover,
+html[data-theme="dark"] .t-side-card:active {
+    background: var(--accent) !important;
+    box-shadow: 0 6px 20px var(--shadow-lg) !important;
+}
+
+html[data-theme="dark"] .t-side-card:hover .t-arrow-overlay svg,
+html[data-theme="dark"] .t-side-card:active .t-arrow-overlay svg {
+    stroke: #fff !important;
+}
+
+/* ─────────────────────────────────────
+   FOOTER
+───────────────────────────────────── */
+html[data-theme="dark"] .site-footer {
+    background-color: #0a0a0a !important;
+}
+
+html[data-theme="dark"] .footer-top {
+    border-bottom-color: #222 !important;
+}
+
+html[data-theme="dark"] .footer-cta h2,
+html[data-theme="dark"] .footer-col h4,
+html[data-theme="dark"] .footer-logo {
+    color: #f0f0f0 !important;
+}
+
+html[data-theme="dark"] .footer-col p,
+html[data-theme="dark"] .footer-col a,
+html[data-theme="dark"] .brand-desc {
+    color: #888;
+}
+
+html[data-theme="dark"] .footer-col a:hover {
+    color: var(--accent);
+}
+
+html[data-theme="dark"] .footer-bottom {
+    border-top-color: #222;
+    color: #555;
+}
+
+html[data-theme="dark"] .btn-book-now {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+html[data-theme="dark"] .btn-book-now:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* ── Popup / Overlays ── */
+html[data-theme="dark"] .popup-overlay {
+    background: var(--overlay);
+}
+
+html[data-theme="dark"] .popup-content {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    box-shadow: 0 20px 60px var(--shadow-lg);
+}
+
+/* ── Scrollbar (dark) ── */
+html[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: #111;
+}
+
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #333;
+}
+
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+/* ── Overrides for Hero Banner / Header Visibility ── */
+html[data-theme="dark"] .main-nav ul li a {
+    color: #fff;
+}
+
+html[data-theme="dark"] .header-contact-btn {
+    color: #fff;
+}
+
+html[data-theme="dark"] .hero-overlay {
+    background: linear-gradient(to right,
+            rgba(14, 14, 14, 1) 0%,
+            rgba(14, 14, 14, 1) 30%,
+            rgba(14, 14, 14, 0.95) 45%,
+            rgba(14, 14, 14, 0.6) 65%,
+            rgba(14, 14, 14, 0) 100%);
 }

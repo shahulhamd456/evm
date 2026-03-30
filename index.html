@@ -12,6 +12,8 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@1,700;1,900&family=Satisfy&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/custome.css">
+    <!-- Anti-FOUC: apply saved theme before paint -->
+    <script>if(localStorage.getItem('evm-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
 </head>
 
 <body>
@@ -53,6 +55,10 @@
             </nav>
             <div class="header-actions">
                 <a href="#" class="header-contact-btn desktop-only">Contact Us</a>
+                <button id="darkToggleBtn" class="dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <span class="icon-moon">&#9790;</span>
+                    <span class="icon-sun">&#9728;</span>
+                </button>
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation" aria-expanded="false">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -265,6 +271,12 @@
                     </svg>
                 </a>
             </div>
+            <button class="msb-dark-toggle" id="sidebarDarkToggle" onclick="toggleDarkMode()">
+                <span class="toggle-label">Dark Mode</span>
+                <div class="toggle-track">
+                    <div class="toggle-thumb"></div>
+                </div>
+            </button>
             <p class="msb-copyright">&copy; 2025 EVM Group</p>
         </div>
     </aside>
@@ -432,12 +444,12 @@
                         <span class="badge-text">YEARS OF<br>EXCELLENCE</span>
                     </div>
                     <div class="about-card img-card reveal reveal-delay-1">
-                        <img class="framer-reveal reveal-img delay-200" src="./assets/images/bmw bike 1.png"
-                            alt="BMW Bike" class="about-grid-img">
+                        <img class="framer-reveal reveal-img delay-200 about-grid-img" src="./assets/images/bmw bike 1.png"
+                            alt="BMW Bike">
                     </div>
                     <div class="about-card porsche-card border-card img-card reveal reveal-delay-2">
-                        <img class="framer-reveal reveal-img delay-200" src="./assets/images/Porshe 1.png"
-                            alt="Porsche GT3 RS" class="about-grid-img">
+                        <img class="framer-reveal reveal-img delay-200 about-grid-img" src="./assets/images/Porshe 1.png"
+                            alt="Porsche GT3 RS">
                     </div>
                 </div>
             </div>
