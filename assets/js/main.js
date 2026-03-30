@@ -389,18 +389,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* 5. Timeline Continuous Diagonal Parallax (Removed for new slider design) */
 
-    /* 6. History Cards Slider Logic */
+    /* 6. History Cards Slider Logic & Drag to Swipe */
     const historyContainer = document.querySelector('.history-cards-container');
     const historyPrevBtn = document.querySelector('.history-nav.prev-btn');
     const historyNextBtn = document.querySelector('.history-nav.next-btn');
 
-    if (historyContainer && historyPrevBtn && historyNextBtn) {
-        historyNextBtn.addEventListener('click', () => {
-            historyContainer.scrollBy({ left: Math.min(window.innerWidth * 0.8, 480), behavior: 'smooth' });
+    if (historyContainer) {
+        if (historyPrevBtn && historyNextBtn) {
+            historyNextBtn.addEventListener('click', () => {
+                historyContainer.scrollBy({ left: Math.min(window.innerWidth * 0.8, 480), behavior: 'smooth' });
+            });
+
+            historyPrevBtn.addEventListener('click', () => {
+                historyContainer.scrollBy({ left: -Math.min(window.innerWidth * 0.8, 480), behavior: 'smooth' });
+            });
+        }
+
+        // --- Mouse Drag (Swiping) Logic ---
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        // Prevent default drag behaviors on images (ghosting)
+        const historyImages = historyContainer.querySelectorAll('img');
+        historyImages.forEach(img => {
+            img.addEventListener('dragstart', (e) => e.preventDefault());
         });
 
-        historyPrevBtn.addEventListener('click', () => {
-            historyContainer.scrollBy({ left: -Math.min(window.innerWidth * 0.8, 480), behavior: 'smooth' });
+        historyContainer.style.cursor = 'grab';
+
+        historyContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            historyContainer.style.cursor = 'grabbing';
+            // Disable scroll snap for smooth 1:1 dragging
+            historyContainer.style.scrollSnapType = 'none';
+            // Disable smooth behavior to make drag instantaneous
+            historyContainer.style.scrollBehavior = 'auto';
+
+            startX = e.pageX - historyContainer.offsetLeft;
+            scrollLeft = historyContainer.scrollLeft;
+        });
+
+        const resetGrabState = () => {
+            if (!isDown) return;
+            isDown = false;
+            historyContainer.style.cursor = 'grab';
+            historyContainer.style.scrollBehavior = 'smooth';
+            historyContainer.style.scrollSnapType = 'x mandatory';
+        };
+
+        historyContainer.addEventListener('mouseleave', resetGrabState);
+        historyContainer.addEventListener('mouseup', resetGrabState);
+
+        historyContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - historyContainer.offsetLeft;
+            const walk = (x - startX) * 1.5; // Scroll speed multiplier
+            historyContainer.scrollLeft = scrollLeft - walk;
         });
     }
 
