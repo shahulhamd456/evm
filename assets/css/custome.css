@@ -2039,7 +2039,7 @@ ul {
    History Cards Section
    =========================== */
 .history-cards-section {
-    padding: 80px 0 100px 0;
+    padding: 40px 0 100px 0;
     background-color: #ffffff;
 }
 
@@ -5270,7 +5270,7 @@ body.no-scroll {
         height: 160px !important;
         border-radius: 14px !important;
     }
-    
+
     .about-bottom-grid .about-card:last-child {
         grid-column: 1 / -1 !important;
         height: 200px !important;
