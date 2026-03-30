@@ -1334,42 +1334,24 @@ ul {
     pointer-events: none;
 }
 
-/* Responsive constraints */
+/* ── Tablet: side cards become floating pill buttons ── */
 @media (max-width: 1220px) {
     .testimonials-container {
-        padding: 0 40px;
+        padding: 0 20px;
     }
 
     .testimonial-carousel {
         position: relative;
         justify-content: center;
-        overflow: hidden;
-        padding-bottom: 0;
+        overflow: visible;
+        gap: 0;
     }
 
     .t-main-card {
         width: 100%;
         max-width: 860px;
-        flex-direction: row;
         height: auto;
-        min-height: 480px;
-    }
-
-    .t-main-image {
-        width: 45%;
-        height: auto;
-    }
-
-    .t-main-image img {
-        object-fit: cover;
-        object-position: center top;
-        width: 100%;
-        height: 100%;
-    }
-
-    .t-main-content {
-        width: 55%;
-        padding: 40px 30px;
+        min-height: 460px;
     }
 
     .t-side-card {
@@ -1377,29 +1359,35 @@ ul {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 50px;
-        height: 50px;
+        width: 46px;
+        height: 46px;
         border-radius: 50%;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 10;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        z-index: 20;
         align-items: center;
         justify-content: center;
         border: none;
-        transition: all 0.3s ease;
+        transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     }
 
     .t-side-card:hover,
     .t-side-card:active {
-        transform: translateY(-50%) scale(1.05) !important;
-        background: rgba(0, 0, 0, 0.9);
+        background: #1a1a1a;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .t-side-card:hover .t-arrow-overlay svg,
+    .t-side-card:active .t-arrow-overlay svg {
+        stroke: #fff;
     }
 
     .t-prev {
-        left: 0;
+        left: -23px;
     }
 
     .t-next {
-        right: 0;
+        right: -23px;
     }
 
     .t-side-card img {
@@ -1408,7 +1396,7 @@ ul {
 
     .t-arrow-overlay {
         position: relative;
-        top: 0;
+        top: auto;
         transform: none;
         height: 100%;
         width: 100%;
@@ -1416,30 +1404,51 @@ ul {
         align-items: center;
         justify-content: center;
     }
+
+    .t-arrow-overlay svg {
+        stroke: #1a1a1a;
+    }
 }
 
-
-
-@media (max-width: 900px) {
-    .testimonial-carousel {
-        position: relative;
-        max-width: 500px;
-        margin: 0 auto;
-        justify-content: center;
-        overflow: hidden;
+/* ── Mobile: stacked card, buttons inside card bottom-right ── */
+@media (max-width: 768px) {
+    .testimonials-section {
+        padding: 60px 0;
     }
 
+    .testimonials-container {
+        padding: 0 20px;
+    }
+
+    .testimonials-title {
+        font-size: 32px;
+        letter-spacing: -1px;
+    }
+
+    .testimonial-carousel {
+        position: relative;
+        margin-top: 30px;
+        overflow: visible;
+        justify-content: center;
+        gap: 0;
+    }
+
+    /* Full-width stacked card */
     .t-main-card {
         flex-direction: column;
         width: 100%;
         max-width: 100%;
         height: auto;
+        min-height: auto;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
     }
 
     .t-main-image {
         width: 100%;
-        height: 300px;
-        background-color: #fafbfc;
+        height: 260px;
+        background-color: #f5f5f5;
+        position: relative;
     }
 
     .t-main-image img {
@@ -1447,11 +1456,7 @@ ul {
         object-position: center bottom;
     }
 
-    .t-main-content {
-        width: 100%;
-        padding: 40px 30px;
-    }
-
+    /* Blue border becomes top stripe */
     .t-image-border {
         top: 0;
         left: 0;
@@ -1461,32 +1466,59 @@ ul {
         height: 4px;
     }
 
+    .t-main-content {
+        width: 100%;
+        padding: 28px 24px 24px;
+    }
+
+    .t-quote-text {
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 24px;
+    }
+
+    .t-name {
+        font-size: 18px;
+    }
+
+    /* Nav buttons: absolute at BOTTOM-RIGHT of the card */
     .t-side-card {
-        display: flex;
         position: absolute;
-        top: 130px;
+        bottom: 24px;
+        top: auto;
+        transform: none;
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background: rgba(0, 0, 0, 0.6);
-        z-index: 10;
+        background: #f0f0f0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+        z-index: 20;
+        display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s ease;
     }
 
-    .t-side-card:hover,
     .t-side-card:active {
-        transform: scale(1.05) !important;
-        background: rgba(0, 0, 0, 0.9);
+        background: #1a1a1a;
     }
 
+    .t-side-card:active .t-arrow-overlay svg {
+        stroke: #fff;
+    }
+
+    /* Prev button: right-side, second from right */
     .t-prev {
-        left: 15px;
+        right: 70px;
+        left: auto;
     }
 
+    /* Next button: rightmost */
     .t-next {
-        right: 15px;
+        right: 24px;
+        left: auto;
     }
 
     .t-side-card img {
@@ -1495,12 +1527,17 @@ ul {
 
     .t-arrow-overlay {
         position: relative;
-        top: 0;
+        top: auto;
         transform: none;
-        height: 100%;
         width: 100%;
+        height: 100%;
+        display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .t-arrow-overlay svg {
+        stroke: #1a1a1a;
     }
 }
 
@@ -2466,12 +2503,75 @@ ul {
 
     .trust-left {
         min-height: 450px;
+        padding: 40px 30px !important;
     }
 }
 
 @media (max-width: 600px) {
     .trust-bottom-cards {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .trust-section {
+        padding: 50px 16px;
+    }
+
+    .trust-container {
+        gap: 16px;
+    }
+
+    .trust-left {
+        min-height: unset;
+        padding: 30px 24px !important;
+    }
+
+    .trust-title {
+        font-size: 36px;
+        margin-bottom: 16px;
+    }
+
+    .trust-badge {
+        margin-bottom: 20px;
+    }
+
+    .trust-desc {
+        font-size: 13px;
+        margin-bottom: 24px;
+    }
+
+    .trust-right {
+        gap: 16px;
+    }
+
+    .trust-image-card {
+        height: 220px;
+    }
+
+    .trust-bottom-cards {
+        gap: 16px;
+    }
+
+    .trust-stat-card {
+        height: auto;
+        min-height: 180px;
+        padding: 24px;
+        gap: 20px;
+    }
+
+    .trust-stat {
+        font-size: 44px;
+        margin-bottom: 6px;
+    }
+
+    .trust-stat-desc {
+        font-size: 13px;
+    }
+
+    .trust-icon {
+        width: 44px;
+        height: 44px;
     }
 }
 
@@ -3006,7 +3106,7 @@ body.no-scroll {
 
     /* Stack the split Trust Section */
     .trust-container {
-        flex-direction: column-reverse !important;
+        display: block !important;
         gap: 50px !important;
         padding: 0 40px !important;
     }
@@ -3014,7 +3114,7 @@ body.no-scroll {
     .trust-left,
     .trust-right {
         width: 100% !important;
-        padding-right: 0 !important;
+
     }
 
     .trust-image-card {
@@ -3475,7 +3575,7 @@ body.no-scroll {
 
     /* 2. Trust Section Details */
     .trust-container {
-        display: flex !important;
+        display: block !important;
         flex-direction: column-reverse !important;
     }
 
@@ -4816,5 +4916,231 @@ body.no-scroll {
     body.sidebar-open {
         overflow: hidden !important;
         touch-action: none;
+    }
+}
+
+
+/* =========================================
+   20. ABOUT SECTION — PHONE EXPERIENCE
+   ========================================= */
+
+/* Read More Button — visible on mobile, hidden on desktop */
+.mobile-only {
+    display: inline-flex;
+    /* visible by default, hidden via desktop query below */
+}
+
+/* Hide on desktop */
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none !important;
+    }
+}
+
+.read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #888;
+    text-decoration: none;
+    padding: 0;
+    margin-top: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    letter-spacing: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.read-more-btn::after {
+    content: '+';
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.read-more-btn.expanded {
+    color: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+}
+
+.read-more-btn.expanded::after {
+    content: '−';
+}
+
+.read-more-btn:hover {
+    color: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+}
+
+/* Read Less — sits at the bottom of expanded content, left-aligned */
+.read-less-btn {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #888;
+    text-decoration: none;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 0 0 1px 0;
+    margin-top: 14px;
+    cursor: pointer;
+    letter-spacing: 0;
+    width: fit-content;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.read-less-btn:hover {
+    color: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+}
+
+/* On desktop — expanded content always visible, read-less never shown */
+@media (min-width: 769px) {
+    .about-expanded-content {
+        max-height: none !important;
+        overflow: visible !important;
+        opacity: 1 !important;
+        transition: none !important;
+    }
+
+    .read-less-btn {
+        display: none !important;
+    }
+}
+
+/* On mobile — expanded content collapses, revealed by JS */
+@media (max-width: 768px) {
+    .about-expanded-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        opacity: 0;
+    }
+
+    .about-expanded-content.open {
+        max-height: 600px;
+        opacity: 1;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* ── About Section container ── */
+    .about-section {
+        height: auto !important;
+        padding: 48px 0 40px !important;
+    }
+
+    .about-container {
+        padding: 0 20px !important;
+    }
+
+    /* ── Top text grid → single column ── */
+    .about-top-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        margin-bottom: 28px !important;
+    }
+
+    /* ── Left column ── */
+    .about-subtitle {
+        font-size: 13px !important;
+        margin-bottom: 10px !important;
+        letter-spacing: 0.3px;
+    }
+
+    .about-title {
+        font-size: clamp(28px, 9vw, 36px) !important;
+        letter-spacing: -1px !important;
+        margin-bottom: 16px !important;
+        line-height: 1.08 !important;
+    }
+
+    .about-highlight {
+        padding-left: 14px !important;
+        border-left-width: 3px !important;
+    }
+
+    .about-highlight-preview,
+    .about-highlight p {
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        line-height: 1.55 !important;
+        /* Clamp to 3 lines before "Read more" */
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+    }
+
+    /* When expanded, remove the line clamp */
+    .about-highlight.expanded .about-highlight-preview,
+    .about-highlight.expanded p {
+        display: block !important;
+        overflow: visible !important;
+        -webkit-line-clamp: unset !important;
+        line-clamp: unset !important;
+    }
+
+    /* ── Right column ── */
+    .about-text-right {
+        padding-top: 0 !important;
+    }
+
+    .about-text-preview p {
+        font-size: 13px !important;
+        line-height: 1.6 !important;
+        /* Clamp to 3 lines */
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+
+    /* When expanded, remove clamp on the preview */
+    .about-text-right.expanded .about-text-preview p {
+        display: block !important;
+        overflow: visible !important;
+        -webkit-line-clamp: unset !important;
+        line-clamp: unset !important;
+    }
+
+    .about-expanded-content p {
+        font-size: 13px !important;
+        line-height: 1.65 !important;
+        color: #555 !important;
+    }
+
+    /* ── Bottom image grid → single column ── */
+    .about-bottom-grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    .about-card {
+        height: 180px !important;
+        border-radius: 14px !important;
+    }
+
+    .badge-num {
+        font-size: 52px !important;
+    }
+
+    .badge-text {
+        font-size: 11px !important;
+        letter-spacing: 2px !important;
     }
 }

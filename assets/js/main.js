@@ -325,122 +325,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const testRole = document.querySelector('.t-role');
 
     const updateTestimonial = (index, direction = 'next') => {
-        if (!mainImg || !prevImg || !nextImg || isAnimating) return;
+        if (!mainImg || isAnimating) return;
         isAnimating = true;
 
         const prevIndex = (index - 1 + testimonialsData.length) % testimonialsData.length;
         const nextIndex = (index + 1) % testimonialsData.length;
 
-        const mainCard = document.querySelector('.t-main-card');
-        const prevCard = document.querySelector('.t-prev');
-        const nextCard = document.querySelector('.t-next');
+        const mainCard    = document.querySelector('.t-main-card');
+        const origPrevImg = document.querySelector('.t-prev img');
+        const origNextImg = document.querySelector('.t-next img');
 
-        const oldImageWrap = document.querySelector('.t-main-image');
-        const oldContentWrap = document.querySelector('.t-main-content');
+        const slideOut = direction === 'next' ? '-24px' : '24px';
+        const slideIn  = direction === 'next' ? '24px'  : '-24px';
 
-        // 1. Create clones for seamless crossfade out
-        const cloneImgWrap = oldImageWrap.cloneNode(true);
-        const cloneContentWrap = oldContentWrap.cloneNode(true);
+        // — Step 1: fade the card OUT —
+        const fadeOut = 'opacity 0.22s ease, transform 0.22s ease';
+        mainCard.style.transition = fadeOut;
+        mainCard.style.opacity    = '0';
+        mainCard.style.transform  = `translateX(${slideOut})`;
 
-        cloneImgWrap.style.position = 'absolute';
-        cloneImgWrap.style.top = '0';
-        cloneImgWrap.style.left = '0';
-        cloneImgWrap.style.width = '45%';
-        cloneImgWrap.style.height = '100%';
-        cloneImgWrap.style.zIndex = '10';
-
-        cloneContentWrap.style.position = 'absolute';
-        cloneContentWrap.style.top = '0';
-        cloneContentWrap.style.left = '45%';
-        cloneContentWrap.style.width = '55%';
-        cloneContentWrap.style.height = '100%';
-        cloneContentWrap.style.zIndex = '10';
-
-        mainCard.appendChild(cloneImgWrap);
-        mainCard.appendChild(cloneContentWrap);
-
-        // Clones for side cards images
-        const origPrevImg = prevCard.querySelector('img');
-        const clonePrevImg = origPrevImg.cloneNode();
-        clonePrevImg.style.position = 'absolute';
-        clonePrevImg.style.top = '0';
-        clonePrevImg.style.left = '0';
-        clonePrevImg.style.width = '100%';
-        clonePrevImg.style.height = '100%';
-        clonePrevImg.style.zIndex = '5';
-        prevCard.appendChild(clonePrevImg);
-
-        const origNextImg = nextCard.querySelector('img');
-        const cloneNextImg = origNextImg.cloneNode();
-        cloneNextImg.style.position = 'absolute';
-        cloneNextImg.style.top = '0';
-        cloneNextImg.style.left = '0';
-        cloneNextImg.style.width = '100%';
-        cloneNextImg.style.height = '100%';
-        cloneNextImg.style.zIndex = '5';
-        nextCard.appendChild(cloneNextImg);
-
-        // 2. Immediately update underlying elements to NEW state
-        testQuote.innerHTML = testimonialsData[index].review;
-        testName.innerHTML = testimonialsData[index].name;
-        testRole.innerHTML = testimonialsData[index].role;
-        mainImg.src = testimonialsData[index].image;
-        origPrevImg.src = testimonialsData[prevIndex].image;
-        origNextImg.src = testimonialsData[nextIndex].image;
-
-        // Setup IN animation starting positions
-        const inOffset = direction === 'next' ? '30px' : '-30px';
-        [testQuote, testName, testRole, mainImg, origPrevImg, origNextImg].forEach(el => el.style.transition = 'none');
-
-        testQuote.style.transform = `translateX(${inOffset})`;
-        testName.style.transform = `translateX(${inOffset})`;
-        testRole.style.transform = `translateX(${inOffset})`;
-        testQuote.style.opacity = '0';
-        testName.style.opacity = '0';
-        testRole.style.opacity = '0';
-        mainImg.style.transform = 'scale(1.05)';
-
-        void mainCard.offsetWidth; // force reflow
-
-        // 3. Trigger Out Animation on Clones
-        const outOffset = direction === 'next' ? '-30px' : '30px';
-        const outTransition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-        [cloneContentWrap, cloneImgWrap, clonePrevImg, cloneNextImg].forEach(el => el.style.transition = outTransition);
-
-        cloneContentWrap.style.opacity = '0';
-        cloneContentWrap.style.transform = `translateX(${outOffset})`;
-        cloneImgWrap.style.opacity = '0';
-        cloneImgWrap.style.transform = 'scale(0.95)';
-        clonePrevImg.style.opacity = '0';
-        cloneNextImg.style.opacity = '0';
-
-        // 4. Trigger In Animation on new underlying content
-        const textTransition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-        const imgTransition = 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
-
-        testQuote.style.transition = textTransition + ' 0.1s';
-        testName.style.transition = textTransition + ' 0.15s';
-        testRole.style.transition = textTransition + ' 0.2s';
-        mainImg.style.transition = imgTransition;
-
-        testQuote.style.opacity = '1';
-        testName.style.opacity = '1';
-        testRole.style.opacity = '1';
-
-        testQuote.style.transform = 'translateX(0)';
-        testName.style.transform = 'translateX(0)';
-        testRole.style.transform = 'translateX(0)';
-        mainImg.style.transform = 'scale(1)';
-
-        // Cleanup
         setTimeout(() => {
-            cloneImgWrap.remove();
-            cloneContentWrap.remove();
-            clonePrevImg.remove();
-            cloneNextImg.remove();
-            isAnimating = false;
-        }, 600);
+            // — Step 2: swap content while invisible —
+            testQuote.textContent = testimonialsData[index].review;
+            testName.textContent  = testimonialsData[index].name;
+            testRole.textContent  = testimonialsData[index].role;
+            mainImg.src           = testimonialsData[index].image;
+
+            if (origPrevImg) origPrevImg.src = testimonialsData[prevIndex].image;
+            if (origNextImg) origNextImg.src = testimonialsData[nextIndex].image;
+
+            // reset to the opposite side instantly
+            mainCard.style.transition = 'none';
+            mainCard.style.transform  = `translateX(${slideIn})`;
+            mainCard.style.opacity    = '0';
+
+            void mainCard.offsetWidth; // force reflow
+
+            // — Step 3: fade IN —
+            mainCard.style.transition = 'opacity 0.30s ease, transform 0.30s cubic-bezier(0.16, 1, 0.3, 1)';
+            mainCard.style.opacity    = '1';
+            mainCard.style.transform  = 'translateX(0)';
+
+            setTimeout(() => {
+                mainCard.style.transition = '';
+                isAnimating = false;
+            }, 320);
+
+        }, 230);
     };
+
 
     if (btnPrev && btnNext) {
         btnNext.addEventListener('click', () => {
@@ -471,7 +404,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* =========================================
+       13. Touch Swipe — Testimonials
+       ========================================= */
+    const testimonialCarousel = document.querySelector('.testimonial-carousel');
+    if (testimonialCarousel) {
+        let tSwipeStartX = 0;
+        let tSwipeStartY = 0;
+
+        testimonialCarousel.addEventListener('touchstart', (e) => {
+            tSwipeStartX = e.touches[0].clientX;
+            tSwipeStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        testimonialCarousel.addEventListener('touchend', (e) => {
+            const dx = tSwipeStartX - e.changedTouches[0].clientX;
+            const dy = tSwipeStartY - e.changedTouches[0].clientY;
+            if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+
+            if (dx > 0) {
+                currentTestimonial = (currentTestimonial + 1) % testimonialsData.length;
+                updateTestimonial(currentTestimonial, 'next');
+            } else {
+                currentTestimonial = (currentTestimonial - 1 + testimonialsData.length) % testimonialsData.length;
+                updateTestimonial(currentTestimonial, 'prev');
+            }
+        }, { passive: true });
+    }
+
+    /* =========================================
+       14. Touch Swipe — Awards / Achievements
+       ========================================= */
+    const awardDotsEl = document.getElementById('award-dots');
+    if (awardDotsEl) {
+        const allAwardDots = Array.from(awardDotsEl.querySelectorAll('.dot'));
+        const totalAwards  = allAwardDots.length;
+        let   aCurrentIdx  = 0;
+
+        allAwardDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => { aCurrentIdx = i; });
+        });
+
+        const awardsSwipeEl = awardDotsEl.closest('section') || document.body;
+        let aSwipeStartX = 0;
+        let aSwipeStartY = 0;
+
+        awardsSwipeEl.addEventListener('touchstart', (e) => {
+            aSwipeStartX = e.touches[0].clientX;
+            aSwipeStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        awardsSwipeEl.addEventListener('touchend', (e) => {
+            const dx = aSwipeStartX - e.changedTouches[0].clientX;
+            const dy = aSwipeStartY - e.changedTouches[0].clientY;
+            if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+
+            aCurrentIdx = dx > 0
+                ? (aCurrentIdx + 1) % totalAwards
+                : (aCurrentIdx - 1 + totalAwards) % totalAwards;
+
+            if (allAwardDots[aCurrentIdx]) allAwardDots[aCurrentIdx].click();
+        }, { passive: true });
+    }
+
 });
+
 
 
 /* =========================================
@@ -769,3 +766,28 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScrollY = currentScrollY;
     }, { passive: true });
 });
+
+
+/* =========================================
+   12. Read More / Read Less Toggle
+   ========================================= */
+function toggleReadMore(expandedId, readMoreId) {
+    const expanded = document.getElementById(expandedId);
+    const readMoreBtn = document.getElementById(readMoreId);
+    if (!expanded || !readMoreBtn) return;
+
+    const isOpen = expanded.classList.contains('open');
+
+    // Toggle expanded content
+    expanded.classList.toggle('open', !isOpen);
+
+    // Hide "Read more" when open, show when closed
+    readMoreBtn.style.display = isOpen ? '' : 'none';
+
+    // Toggle expanded class on the preview container (releases line-clamp)
+    const parent = readMoreBtn.closest('.about-highlight, .about-text-right');
+    if (parent) {
+        parent.classList.toggle('expanded', !isOpen);
+    }
+}
+
