@@ -286,31 +286,100 @@
         <div class="evm-preloader-inner">
             <!-- Spinning Wheel -->
             <div class="evm-wheel-wrap">
-                <svg class="evm-wheel-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <!-- Outer tire -->
-                    <circle cx="100" cy="100" r="93" fill="#0d0d0d" stroke="#222" stroke-width="2"/>
-                    <!-- Tire tread ring -->
-                    <circle cx="100" cy="100" r="93" fill="none" stroke="#181818" stroke-width="14" stroke-dasharray="9 5"/>
-                    <!-- Rim outer ring -->
-                    <circle cx="100" cy="100" r="82" fill="none" stroke="#2e2e2e" stroke-width="1.5"/>
-                    <!-- Spokes (5) from hub edge r=28 to rim r=80 -->
-                    <!-- Spoke 1: up -->
-                    <line x1="100" y1="72" x2="100" y2="20" stroke="#b8922a" stroke-width="5" stroke-linecap="round"/>
-                    <!-- Spoke 2: upper-right -->
-                    <line x1="126.7" y1="91.9" x2="174.2" y2="75.9" stroke="#b8922a" stroke-width="5" stroke-linecap="round"/>
-                    <!-- Spoke 3: lower-right -->
-                    <line x1="115.3" y1="120.8" x2="145.9" y2="163.1" stroke="#b8922a" stroke-width="5" stroke-linecap="round"/>
-                    <!-- Spoke 4: lower-left -->
-                    <line x1="84.7" y1="120.8" x2="54.1" y2="163.1" stroke="#b8922a" stroke-width="5" stroke-linecap="round"/>
-                    <!-- Spoke 5: upper-left -->
-                    <line x1="73.3" y1="91.9" x2="25.8" y2="75.9" stroke="#b8922a" stroke-width="5" stroke-linecap="round"/>
-                    <!-- Center hub outer -->
-                    <circle cx="100" cy="100" r="30" fill="#0a0a0a" stroke="#b8922a" stroke-width="2"/>
-                    <!-- Center hub inner detail -->
-                    <circle cx="100" cy="100" r="18" fill="#0d0d0d" stroke="#3a3a3a" stroke-width="1"/>
-                    <circle cx="100" cy="100" r="6" fill="#b8922a"/>
-                    <!-- Rim inner accent ring -->
-                    <circle cx="100" cy="100" r="78" fill="none" stroke="#b8922a" stroke-width="0.8" opacity="0.4"/>
+                <svg class="evm-wheel-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <radialGradient id="wRimBowl" cx="38%" cy="35%" r="65%">
+                            <stop offset="0%" stop-color="#323232"/>
+                            <stop offset="70%" stop-color="#1a1a1a"/>
+                            <stop offset="100%" stop-color="#0d0d0d"/>
+                        </radialGradient>
+                        <radialGradient id="wRotor" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#2e2e2e"/>
+                            <stop offset="100%" stop-color="#181818"/>
+                        </radialGradient>
+                        <linearGradient id="wSpoke" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#e0b840"/>
+                            <stop offset="40%" stop-color="#c49a28"/>
+                            <stop offset="100%" stop-color="#7a5808"/>
+                        </linearGradient>
+                        <linearGradient id="wChrome" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#666"/>
+                            <stop offset="22%" stop-color="#e8e8e8"/>
+                            <stop offset="48%" stop-color="#aaa"/>
+                            <stop offset="72%" stop-color="#e0e0e0"/>
+                            <stop offset="100%" stop-color="#777"/>
+                        </linearGradient>
+                        <radialGradient id="wHub" cx="32%" cy="28%" r="72%">
+                            <stop offset="0%" stop-color="#e0b840"/>
+                            <stop offset="55%" stop-color="#b08020"/>
+                            <stop offset="100%" stop-color="#5a3a00"/>
+                        </radialGradient>
+                        <radialGradient id="wSpecular" cx="30%" cy="25%" r="60%">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.08)"/>
+                            <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+                        </radialGradient>
+                        <clipPath id="wRimClip">
+                            <circle cx="150" cy="150" r="118"/>
+                        </clipPath>
+                        <path id="wSpokeShape" d="M174,145 Q218,142 262,148 L262,152 Q218,158 174,155 Z"/>
+                    </defs>
+
+                    <!-- Outer rubber tire -->
+                    <circle cx="150" cy="150" r="140" fill="#111"/>
+                    <!-- Tire tread: outer band -->
+                    <circle cx="150" cy="150" r="136" fill="none" stroke="#1c1c1c" stroke-width="7" stroke-dasharray="11 5"/>
+                    <!-- Tire inner ridge -->
+                    <circle cx="150" cy="150" r="128" fill="none" stroke="#252525" stroke-width="2"/>
+                    <!-- Tire sidewall shine -->
+                    <path d="M 60,80 Q 80,55 110,50" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="5" stroke-linecap="round"/>
+
+                    <!-- Chrome rim lip -->
+                    <circle cx="150" cy="150" r="124" fill="none" stroke="url(#wChrome)" stroke-width="8"/>
+
+                    <!-- Rim bowl (dark concave interior) -->
+                    <circle cx="150" cy="150" r="118" fill="url(#wRimBowl)"/>
+
+                    <!-- Brake rotor disc -->
+                    <circle cx="150" cy="150" r="82" fill="url(#wRotor)"/>
+                    <!-- Rotor outer ring highlight -->
+                    <circle cx="150" cy="150" r="82" fill="none" stroke="#333" stroke-width="2"/>
+                    <!-- Rotor ventilation slots -->
+                    <circle cx="150" cy="150" r="67" fill="none" stroke="#2a2a2a" stroke-width="18" stroke-dasharray="10 7"/>
+                    <!-- Rotor inner face -->
+                    <circle cx="150" cy="150" r="52" fill="#1a1a1a" stroke="#2d2d2d" stroke-width="1"/>
+                    <!-- Rotor cross-drill pattern -->
+                    <circle cx="150" cy="150" r="58" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="3 10" opacity="0.7"/>
+
+                    <!-- Five spokes (tapered polygons clipped to rim) -->
+                    <g clip-path="url(#wRimClip)">
+                        <!-- Spoke shadow layer -->
+                        <use href="#wSpokeShape" transform="rotate(-90, 150, 150)" fill="#000" opacity="0.45"/>
+                        <use href="#wSpokeShape" transform="rotate(-18, 150, 150)" fill="#000" opacity="0.45"/>
+                        <use href="#wSpokeShape" transform="rotate(54,  150, 150)" fill="#000" opacity="0.45"/>
+                        <use href="#wSpokeShape" transform="rotate(126, 150, 150)" fill="#000" opacity="0.45"/>
+                        <use href="#wSpokeShape" transform="rotate(198, 150, 150)" fill="#000" opacity="0.45"/>
+                        <!-- Spoke gold layer -->
+                        <use href="#wSpokeShape" transform="rotate(-90, 150, 150)" fill="url(#wSpoke)"/>
+                        <use href="#wSpokeShape" transform="rotate(-18, 150, 150)" fill="url(#wSpoke)"/>
+                        <use href="#wSpokeShape" transform="rotate(54,  150, 150)" fill="url(#wSpoke)"/>
+                        <use href="#wSpokeShape" transform="rotate(126, 150, 150)" fill="url(#wSpoke)"/>
+                        <use href="#wSpokeShape" transform="rotate(198, 150, 150)" fill="url(#wSpoke)"/>
+                    </g>
+
+                    <!-- Rim inner accent ring (gold) -->
+                    <circle cx="150" cy="150" r="119" fill="none" stroke="#c49a28" stroke-width="0.8" opacity="0.5"/>
+
+                    <!-- Center hub -->
+                    <circle cx="150" cy="150" r="28" fill="url(#wHub)"/>
+                    <circle cx="150" cy="150" r="28" fill="none" stroke="#e0b840" stroke-width="1.5"/>
+                    <circle cx="150" cy="150" r="20" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="1"/>
+                    <!-- Hub bolt detail -->
+                    <circle cx="150" cy="150" r="5" fill="#e0b840"/>
+
+                    <!-- Full-wheel 3D specular overlay -->
+                    <circle cx="150" cy="150" r="140" fill="url(#wSpecular)"/>
+                    <!-- Top-left rim specular -->
+                    <path d="M 72,82 Q 96,64 124,66" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="7" stroke-linecap="round"/>
                 </svg>
             </div>
             <div class="evm-preloader-logo-wrap">
@@ -347,6 +416,19 @@
                         progress. EVM Group stands strong as a symbol
                         of trust, delivering exceptional automotive
                         experiences every mile.</p>
+
+                    <div class="hero-exp-bar hero-intro-reveal hero-delay-exp">
+                        <div class="hero-exp-divider"></div>
+                        <div class="hero-exp-stat">
+                            <span class="hero-exp-num">68<sup>+</sup></span>
+                            <span class="hero-exp-label">Years of<br>Experience</span>
+                        </div>
+                        <div class="hero-exp-dot"></div>
+                        <div class="hero-exp-stat">
+                            <span class="hero-exp-num">10<sup>k+</sup></span>
+                            <span class="hero-exp-label">Happy<br>Customers</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

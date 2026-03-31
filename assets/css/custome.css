@@ -6012,6 +6012,14 @@ html[data-theme="dark"] .hero-description {
     color: #fff;
 }
 
+html[data-theme="dark"] .hero-exp-label {
+    color: rgba(255,255,255,0.55);
+}
+
+html[data-theme="dark"] .hero-exp-dot {
+    background: rgba(255,255,255,0.2);
+}
+
 html[data-theme="dark"] .hero-overlay {
     background: linear-gradient(to right,
             rgba(14, 14, 14, 0.8) 0%,
@@ -6139,6 +6147,65 @@ html[data-theme="dark"] .hero-overlay {
 
 .hero-delay-text2 {
     transition-delay: 480ms;
+}
+
+.hero-delay-exp {
+    transition-delay: 700ms;
+}
+
+/* Hero 68 / Experience stats bar */
+.hero-exp-bar {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 28px;
+    margin-left: 5px;
+}
+
+.hero-exp-divider {
+    width: 36px;
+    height: 2px;
+    background: #c41e1e;
+    flex-shrink: 0;
+}
+
+.hero-exp-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.25);
+    flex-shrink: 0;
+}
+
+.hero-exp-stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-exp-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: #c41e1e;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+.hero-exp-num sup {
+    font-size: 16px;
+    font-weight: 700;
+    vertical-align: super;
+}
+
+.hero-exp-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #555;
+    line-height: 1.5;
 }
 
 @keyframes heroFadeIn {
