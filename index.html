@@ -281,23 +281,37 @@
         </div>
     </aside>
 
-    <!-- Cinematic Preloader -->
+    <!-- Cinematic Premium Preloader -->
     <div class="evm-preloader" id="evmPreloader">
+        <!-- Corner bracket accents -->
+        <div class="evm-pre-corner evm-pre-corner--tl" aria-hidden="true"></div>
+        <div class="evm-pre-corner evm-pre-corner--tr" aria-hidden="true"></div>
+        <div class="evm-pre-corner evm-pre-corner--bl" aria-hidden="true"></div>
+        <div class="evm-pre-corner evm-pre-corner--br" aria-hidden="true"></div>
+        <!-- Scan line sweep -->
+        <div class="evm-pre-scanline" aria-hidden="true"></div>
+
         <div class="evm-preloader-inner">
-            <!-- Spinning Wheel Photo -->
+            <!-- Wheel with glow ring -->
             <div class="evm-wheel-wrap">
-                <img src="assets/images/wheel-intro.png" alt="Luxury Car Wheel" class="evm-wheel-img" draggable="false">
+                <div class="evm-wheel-glow-ring" aria-hidden="true"></div>
+                <div class="evm-wheel-entrance-wrap">
+                    <img src="assets/images/wheel-intro.png" alt="Luxury Car Wheel" class="evm-wheel-img" draggable="false">
+                </div>
             </div>
-            <div class="evm-preloader-logo-wrap">
-                <span class="evm-preloader-logo">EVM</span>
-                <span class="evm-preloader-tagline">25 Years of Legacy</span>
+
+            <!-- Logo row with decorative lines and letter animation -->
+            <div class="evm-pre-logo-row">
+                <div class="evm-pre-deco-line evm-pre-deco-line--l" aria-hidden="true"></div>
+                <span class="evm-preloader-logo"><span class="evm-logo-l" style="--li:0">E</span><span class="evm-logo-l" style="--li:1">V</span><span class="evm-logo-l" style="--li:2">M</span></span>
+                <div class="evm-pre-deco-line evm-pre-deco-line--r" aria-hidden="true"></div>
             </div>
+
+            <span class="evm-preloader-tagline">25 Years of Legacy</span>
+
             <div class="evm-preloader-bar-wrap">
                 <div class="evm-preloader-bar" id="evmPreloaderBar"></div>
             </div>
-        </div>
-        <div class="evm-preloader-lines" aria-hidden="true">
-            <span></span><span></span><span></span><span></span><span></span>
         </div>
     </div>
 

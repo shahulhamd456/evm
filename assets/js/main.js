@@ -817,8 +817,8 @@ function toggleReadMore(expandedId, readMoreId) {
 (function heroIntroSequence() {
     const preloader = document.getElementById('evmPreloader');
 
-    const PRELOADER_DISMISS  = 2300;  // ms: when to start fading preloader
-    const CONTENT_REVEAL_LAG = 400;   // ms after dismiss starts before content appears
+    const PRELOADER_DISMISS  = 3300;  // ms: when to start fading preloader (premium animation needs 3.3s)
+    const CONTENT_REVEAL_LAG = 350;   // ms after dismiss starts before content appears
 
     // ── Step 1: Dismiss preloader ──────────────────────────────────
     const dismissPreloader = () => {
