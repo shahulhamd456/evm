@@ -141,7 +141,7 @@ ul {
 .main-nav ul li a {
     font-size: 16px;
     font-weight: 400;
-    color: #111;
+    color: #ffffff;
     font-family: 'Inter', sans-serif;
     transition: all 0.3s ease;
     opacity: 0.9;
@@ -164,7 +164,7 @@ ul {
 .header-contact-btn {
     font-size: 16px;
     font-weight: 400;
-    color: #111;
+    color: #ffffff;
     font-family: 'Inter', sans-serif;
     transition: all 0.3s ease;
     opacity: 0.9;
@@ -229,23 +229,72 @@ ul {
 
 
 /* ===========================
-   Global Scroll Animations
+   Global Scroll Animations (Premium Automotive Theme)
    =========================== */
-.reveal {
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-up,
+.reveal-scale,
+.reveal-fade,
+.framer-reveal {
     opacity: 0;
-    filter: blur(8px);
-    transform: perspective(1200px) translateY(60px) rotateX(25deg) scale(0.95);
-    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1),
-        transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
-        filter 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: opacity, transform, filter;
-    transform-origin: top center;
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.revealed {
+/* Base default modifiers */
+.reveal {
+    transform: translate(0px, 40px) scale(1);
+    filter: blur(4px);
+}
+
+.reveal-left {
+    transform: translate(-50px, 0px) scale(1);
+    filter: blur(4px);
+}
+
+.reveal-right {
+    transform: translate(50px, 0px) scale(1);
+    filter: blur(4px);
+}
+
+.reveal-up {
+    transform: translate(0px, 40px) scale(1);
+    filter: blur(4px);
+}
+
+.reveal-scale {
+    transform: translate(0px, 0px) scale(0.92);
+    filter: blur(4px);
+}
+
+.reveal-fade {
+    transform: translate(0px, 0px) scale(1);
+    filter: blur(4px);
+}
+
+/* Framer reveal fallback */
+.framer-reveal {
+    transform: translate(0px, 30px) scale(1);
+    filter: blur(4px);
+}
+
+/* Revealed States */
+.reveal.revealed,
+.reveal-left.revealed,
+.reveal-right.revealed,
+.reveal-up.revealed,
+.reveal-scale.revealed,
+.reveal-fade.revealed,
+.framer-reveal.framer-in-view,
+.framer-reveal.revealed {
+    /* Support both intersection observers */
     opacity: 1;
     filter: blur(0px);
-    transform: perspective(1200px) translateY(0) rotateX(0deg) scale(1);
+    transform: translate(0px, 0px) scale(1);
 }
 
 .delay-50 {
@@ -318,11 +367,10 @@ ul {
     height: 100%;
     z-index: 2;
     background: linear-gradient(to right,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(255, 255, 255, 1) 25%,
-            rgba(255, 255, 255, 0.95) 35%,
-            rgba(255, 255, 255, 0.6) 50%,
-            rgba(255, 255, 255, 0) 100%);
+            rgba(255, 255, 255, 0.8) 0%,
+            rgba(255, 255, 255, 0.5) 25%,
+            rgba(255, 255, 255, 0.2) 40%,
+            rgba(255, 255, 255, 0) 70%);
 }
 
 /* Content Container */
@@ -5299,9 +5347,7 @@ html[data-theme="dark"] body {
 }
 
 /* ── Hero Banner ── */
-html[data-theme="dark"] .hero-overlay {
-    background: linear-gradient(to right, #191717 28%, rgba(102, 102, 102, 0.1) 100%) !important;
-}
+
 
 html[data-theme="dark"] .hero-legacy-text,
 html[data-theme="dark"] .hero-description {
@@ -5941,13 +5987,17 @@ html[data-theme="dark"] .header-contact-btn {
     color: #fff;
 }
 
+html[data-theme="dark"] .hero-legacy-text,
+html[data-theme="dark"] .hero-description {
+    color: #fff;
+}
+
 html[data-theme="dark"] .hero-overlay {
     background: linear-gradient(to right,
-            rgba(14, 14, 14, 1) 0%,
-            rgba(14, 14, 14, 1) 30%,
-            rgba(14, 14, 14, 0.95) 45%,
-            rgba(14, 14, 14, 0.6) 65%,
-            rgba(14, 14, 14, 0) 100%);
+            rgba(14, 14, 14, 0.8) 0%,
+            rgba(14, 14, 14, 0.5) 25%,
+            rgba(14, 14, 14, 0.2) 40%,
+            rgba(14, 14, 14, 0) 70%);
 }
 
 
@@ -5961,4 +6011,121 @@ html[data-theme="dark"] .hero-overlay {
 .t-next {
 
     border-radius: 0px 12px 12px 0px
+}
+
+/* ── Interactive Premium Cards (Hover Zoom effect) ── */
+.zoom-hover-card {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zoom-hover-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px var(--shadow-md);
+}
+
+/* ── Hero Custom Intro Animations ── */
+
+/* Full-screen cinematic blur overlay during car drive-by */
+.hero-intro-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(18px) saturate(0.6);
+    -webkit-backdrop-filter: blur(18px) saturate(0.6);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-intro-overlay.fade-out {
+    opacity: 0;
+}
+
+/* Car image — drives from right to left fast */
+.hero-intro-car {
+    position: absolute;
+    bottom: -5%;
+    left: 0;
+    width: 70vw;
+    max-width: 1000px;
+    z-index: 50;
+    pointer-events: none;
+    transform: translate3d(110vw, 0, 0);
+    /* Used scale and skew to simulate incredible 3D speed and braking physics natively */
+    animation: carDriveByLeft 2.8s cubic-bezier(1, 1, 1, 1) forwards;
+    will-change: transform, opacity;
+    /* Removed heavy drop-shadow filter to fix GPU render stutter */
+}
+
+@keyframes carDriveByLeft {
+    0% {
+        /* Starts off-screen Left, leaning forward (right) into the motion */
+        transform: translate3d(110vw, 0, 0) scale(0.9) skewX(2deg);
+    }
+
+    100% {
+        /* Ends off-screen Right, braking (leaning back) slightly */
+
+        transform: translate3d(-110vw, 0, 0) scale(1.1) skewX(-6deg);
+    }
+}
+
+/* Hero content — starts hidden, JS will trigger reveal classes */
+.hero-intro-reveal {
+    opacity: 0;
+    transform: translateX(-40px);
+    filter: blur(5px);
+    transition: opacity 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        filter 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-intro-reveal.hero-visible {
+    opacity: 1;
+    transform: translateX(0px);
+    filter: blur(0px);
+}
+
+/* Premium Reveal for 25 Text */
+.hero-25-reveal {
+    opacity: 0;
+    transform: scale(1.12) translateX(-40px);
+    filter: blur(8px);
+    transform-origin: left center;
+    transition: opacity 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        filter 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-25-reveal.hero-visible {
+    opacity: 1;
+    transform: scale(1) translateX(0px);
+    filter: blur(0px);
+}
+
+.hero-delay-25 {
+    transition-delay: 0ms;
+}
+
+.hero-delay-text1 {
+    transition-delay: 400ms;
+}
+
+.hero-delay-text2 {
+    transition-delay: 500ms;
+}
+
+@keyframes heroFadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(0px, 40px) scale(0.92);
+        filter: blur(4px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0px) scale(1);
+        filter: blur(0px);
+    }
 }

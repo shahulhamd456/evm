@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@1,700;1,900&family=Satisfy&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/custome.css">
+    <link rel="stylesheet" href="assets/css/custome.css?v=5">
     <!-- Anti-FOUC: apply saved theme before paint -->
     <script>if (localStorage.getItem('evm-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');</script>
 </head>
@@ -283,7 +283,13 @@
 
     <main>
         <!-- Hero Banner Section -->
-        <section class="hero-banner-section">
+        <section class="hero-banner-section" style="overflow: hidden; position: relative;">
+            <!-- Cinematic Blur Overlay (during car drive-by) -->
+            <div class="hero-intro-overlay" id="heroIntroOverlay"></div>
+
+            <!-- Hero Intro Car Animation -->
+            <img src="./assets/images/Hero/hero porshe.png" alt="Intro Car" class="hero-intro-car" id="heroIntroCar">
+
             <!-- Video Background -->
             <div class="hero-video-wrap">
                 <video autoplay muted loop playsinline class="hero-video">
@@ -292,14 +298,13 @@
             </div>
             <!-- White Gradient Overlay -->
             <div class="hero-overlay"></div>
-            <!-- Removed Red Glow Effect -->
             <!-- Content -->
             <div class="hero-content">
                 <div class="hero-left">
-                    <div class="hero-big-number reveal"><img src="./assets/images/25 year image.png" alt=""></div>
-                    <p class="hero-legacy-text reveal delay-100">Years of Legacy</p>
+                    <div class="hero-big-number hero-25-reveal hero-delay-25" id="heroNum"><img src="./assets/images/25 year image.png" alt="25"></div>
+                    <p class="hero-legacy-text hero-intro-reveal hero-delay-text1">Years of Legacy</p>
 
-                    <p class="hero-description reveal delay-200">25 years of passion, performance, and
+                    <p class="hero-description hero-intro-reveal hero-delay-text2">25 years of passion, performance, and
                         progress. EVM Group stands strong as a symbol
                         of trust, delivering exceptional automotive
                         experiences every mile.</p>
@@ -312,15 +317,15 @@
         <section class="trust-section">
             <div class="trust-container">
                 <div class="trust-left">
-                    <div class="trust-badge reveal">OUR HERITAGE</div>
-                    <h2 class="trust-title reveal delay-100">Building<br>Trust<br>For Over<br><span
+                    <div class="trust-badge reveal-left">OUR HERITAGE</div>
+                    <h2 class="trust-title reveal-left delay-100">Building<br>Trust<br>For Over<br><span
                             class="highlight-year">68
                             Years</span></h2>
-                    <p class="trust-desc reveal delay-200">We've been at the forefront of<br>innovation, consistently
+                    <p class="trust-desc reveal-up delay-200">We've been at the forefront of<br>innovation, consistently
                         delivering<br>excellence and building lasting<br>relationships that stand the test<br>of time.
                     </p>
 
-                    <div class="trust-leaders reveal delay-300">
+                    <div class="trust-leaders reveal-up delay-300">
                         <div class="trust-avatars">
                             <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&q=80"
                                 alt="Leader" style="object-fit: cover;">
@@ -337,8 +342,8 @@
                     </div>
                 </div>
 
-                <div class="trust-right reveal delay-200">
-                    <div class="trust-image-card reveal reveal-delay-1">
+                <div class="trust-right reveal-fade delay-200">
+                    <div class="trust-image-card reveal-up reveal-delay-1 zoom-hover-card">
                         <img src="./assets/images/modern_glass_building.png" alt="Company Building"
                             class="trust-building-img">
                         <button class="trust-arrow-btn top-btn">
@@ -350,7 +355,7 @@
                     </div>
 
                     <div class="trust-bottom-cards">
-                        <div class="trust-stat-card white-card reveal reveal-delay-1">
+                        <div class="trust-stat-card white-card reveal-up reveal-delay-1 zoom-hover-card">
                             <div class="trust-card-header">
                                 <div class="trust-icon clock-icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -372,7 +377,7 @@
                             </div>
                         </div>
 
-                        <div class="trust-stat-card blue-card reveal reveal-delay-2">
+                        <div class="trust-stat-card blue-card reveal-up reveal-delay-2 zoom-hover-card">
                             <div class="trust-card-header">
                                 <div class="trust-icon people-icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -406,7 +411,7 @@
             <div class="about-container">
                 <!-- Top Text Grid -->
                 <div class="about-top-grid">
-                    <div class="about-text-left reveal">
+                    <div class="about-text-left reveal-left">
                         <span class="about-subtitle">25 Years of Trusted Leadership</span>
                         <h2 class="about-title">A Legacy Built on<br>Vision and<br>Determination.</h2>
                         <div class="about-highlight">
@@ -415,7 +420,7 @@
 
                         </div>
                     </div>
-                    <div class="about-text-right reveal reveal-delay-1">
+                    <div class="about-text-right reveal-up reveal-delay-1">
                         <div class="about-text-preview">
                             <p>EVM Group was founded by E.V. Mathai, whose entrepreneurial journey began with trading
                                 in
@@ -439,15 +444,15 @@
 
                 <!-- Bottom Image Grid -->
                 <div class="about-bottom-grid">
-                    <div class="about-card red-badge-card reveal">
+                    <div class="about-card red-badge-card reveal-up zoom-hover-card">
                         <span class="badge-num">25</span>
                         <span class="badge-text">YEARS OF<br>EXCELLENCE</span>
                     </div>
-                    <div class="about-card img-card reveal reveal-delay-1">
+                    <div class="about-card img-card reveal-up reveal-delay-1 zoom-hover-card">
                         <img class="framer-reveal reveal-img delay-200 about-grid-img"
                             src="./assets/images/bmw bike 1.png" alt="BMW Bike">
                     </div>
-                    <div class="about-card porsche-card border-card img-card reveal reveal-delay-2">
+                    <div class="about-card porsche-card border-card img-card reveal-up reveal-delay-2 zoom-hover-card">
                         <img class="framer-reveal reveal-img delay-200 about-grid-img"
                             src="./assets/images/Porshe 1.png" alt="Porsche GT3 RS">
                     </div>
@@ -461,7 +466,7 @@
             <div class="history-slider-wrapper">
                 <button class="history-nav prev-btn">&#10094;</button>
                 <button class="history-nav next-btn">&#10095;</button>
-                <div class="history-cards-container reveal delay-200">
+                <div class="history-cards-container reveal-fade delay-200">
                     <div class="history-card">
                         <div class="hc-image" style="overflow: hidden;">
                             <img class="framer-reveal reveal-img delay-100" src="./assets/images/History/MG Hector.png"
@@ -828,7 +833,7 @@
 
             <div class="dealers-container">
                 <!-- 1. Porsche -->
-                <div class="dealer-panel reveal delay-100 active"
+                <div class="dealer-panel reveal-up delay-100 active"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ Porshe.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -840,7 +845,7 @@
                 </div>
 
                 <!-- 2. BMW -->
-                <div class="dealer-panel reveal delay-200"
+                <div class="dealer-panel reveal-up delay-200"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ BMW.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -852,7 +857,7 @@
                 </div>
 
                 <!-- 3. MINI -->
-                <div class="dealer-panel reveal delay-300"
+                <div class="dealer-panel reveal-up delay-300"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ MINI.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -864,7 +869,7 @@
                 </div>
 
                 <!-- 4. BMW Motorrad -->
-                <div class="dealer-panel reveal delay-400"
+                <div class="dealer-panel reveal-up delay-400"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ MotoRaad.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -876,7 +881,7 @@
                 </div>
 
                 <!-- 5. Indian -->
-                <div class="dealer-panel reveal delay-500"
+                <div class="dealer-panel reveal-up delay-500"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ Indian.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -888,7 +893,7 @@
                 </div>
 
                 <!-- 6. Cinemas -->
-                <div class="dealer-panel reveal delay-500"
+                <div class="dealer-panel reveal-up delay-500"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ Cinimas.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -900,7 +905,7 @@
                 </div>
 
                 <!-- 7. Super Transportation -->
-                <div class="dealer-panel reveal delay-500"
+                <div class="dealer-panel reveal-up delay-500"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ Super\ Transpotation.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -912,7 +917,7 @@
                 </div>
 
                 <!-- 8. Plantation -->
-                <div class="dealer-panel reveal delay-500"
+                <div class="dealer-panel reveal-up delay-500"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ Plantaion.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -924,7 +929,7 @@
                 </div>
 
                 <!-- 9. Honda -->
-                <div class="dealer-panel reveal delay-500"
+                <div class="dealer-panel reveal-up delay-500"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ Honda.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -936,7 +941,7 @@
                 </div>
 
                 <!-- 10. Ashok Leyland -->
-                <div class="dealer-panel reveal delay-500"
+                <div class="dealer-panel reveal-up delay-500"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ Ashok\ Leyland.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -948,7 +953,7 @@
                 </div>
 
                 <!-- 11. Datsun -->
-                <div class="dealer-panel reveal delay-500"
+                <div class="dealer-panel reveal-up delay-500"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ datsun.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -960,7 +965,7 @@
                 </div>
 
                 <!-- 12. Skoda -->
-                <div class="dealer-panel reveal delay-500"
+                <div class="dealer-panel reveal-up delay-500"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ Scoda.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -972,7 +977,7 @@
                 </div>
 
                 <!-- 13. Isuzu -->
-                <div class="dealer-panel reveal delay-500"
+                <div class="dealer-panel reveal-up delay-500"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ Isuzu.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -984,7 +989,7 @@
                 </div>
 
                 <!-- 14. Nissan -->
-                <div class="dealer-panel reveal delay-500"
+                <div class="dealer-panel reveal-up delay-500"
                     style="background-image: url('./assets/images/EVM\ Dealers/EVM\ Nissan.png');">
                     <h2 class="dealers-title framer-reveal delay-200" style="pointer-events: none;">We are Dealers for
                     </h2>
@@ -998,8 +1003,8 @@
             </div>
         </section>
         <section class="directors-section">
-            <div class="directors-header reveal">
-                <div class="directors-header-left reveal">
+            <div class="directors-header reveal-up">
+                <div class="directors-header-left reveal-left">
                     <h5 class="directors-subtitle">LEADERSHIP ARCHITECTURE</h5>
                     <h2 class="directors-title">Our Directors</h2>
                 </div>
@@ -1011,7 +1016,7 @@
 
             <div class="directors-grid">
                 <!-- Card 1 -->
-                <div class="director-card reveal">
+                <div class="director-card reveal-up zoom-hover-card">
                     <div class="director-image">
                         <img src="./assets/images/Ev Mathai.png" alt="E V Mathai">
                     </div>
@@ -1029,7 +1034,7 @@
 
 
                 <!-- Card 2-->
-                <div class="director-card reveal">
+                <div class="director-card reveal-up zoom-hover-card">
                     <div class="director-image">
                         <img src="./assets/images/Em Johny.png" alt="E.M Johny">
                     </div>
@@ -1046,7 +1051,7 @@
 
                 <!-- Card 3-->
 
-                <div class="director-card reveal">
+                <div class="director-card reveal-up zoom-hover-card">
                     <div class="director-image">
                         <img src="./assets/images/Sabu john.png" alt="Sabu Johny">
                     </div>
@@ -1062,7 +1067,7 @@
                 </div>
 
                 <!-- Card 4 -->
-                <div class="director-card reveal">
+                <div class="director-card reveal-up zoom-hover-card">
                     <div class="director-image">
                         <img src="./assets/images/Divya Paul.png" alt="Divya Paul">
                     </div>
@@ -1079,19 +1084,19 @@
             </div>
         </section>
         <section class="achievements-section">
-            <div class="achievements-header reveal">
+            <div class="achievements-header reveal-up">
                 <h2 class="achievements-title">Achievements and Awards</h2>
                 <p class="achievements-subtitle">Celebrating our milestones, dedication, and industry recognition</p>
             </div>
 
             <!-- Main Achievement Slider Hub -->
             <div class="main-achievement-card framer-reveal">
-                <div class="achievement-image-column reveal" style="overflow: hidden; flex: 1.2;">
+                <div class="achievement-image-column reveal-fade" style="overflow: hidden; flex: 1.2;">
                     <img id="award-img" src="./assets/images/Awwards section/Nissan showroom.png" alt="Featured Award"
                         style="width: 100%; height: 100%; object-fit: cover;">
                     <span class="feat-badge">FEATURED ACHIEVEMENT</span>
                 </div>
-                <div class="achievement-content-column reveal delay-200"
+                <div class="achievement-content-column reveal-up delay-200"
                     style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <h3 id="award-title" class="achievement-heading" style="min-height: 40px;">Nissan Sales &
@@ -1112,7 +1117,7 @@
 
             <!-- Bottom Awards Row -->
             <div class="bottom-awards-row">
-                <div class="award-card border-card reveal">
+                <div class="award-card border-card reveal-up zoom-hover-card">
                     <div class="award-logo">
                         <img src="./assets/images/ashivement 1.png" alt="EVM Honda Award"
                             onerror="this.onerror=null; this.src='./assets/images/Honda.png'">
@@ -1122,7 +1127,7 @@
                         <p>EVM Honda proudly earned Dealer of the Year recognition in 2018.</p>
                     </div>
                 </div>
-                <div class="award-card border-card reveal">
+                <div class="award-card border-card reveal-up zoom-hover-card">
                     <div class="award-logo">
                         <img src="./assets/images/ashivement 2.png" alt="EVM Ashok Leyland Award"
                             onerror="this.onerror=null; this.src='./assets/images/Ashok Leyland.png'">
@@ -1136,13 +1141,13 @@
         </section>
         <section class="testimonials-section">
             <div class="testimonials-container">
-                <div class="testimonials-header reveal">
+                <div class="testimonials-header reveal-up">
                     <h5 class="testimonials-subtitle">CUSTOMER EXPERIENCES</h5>
                     <h2 class="testimonials-title">WHAT PEOPLE SAY</h2>
                     <div class="testimonials-line"></div>
                 </div>
 
-                <div class="testimonial-carousel reveal delay-200">
+                <div class="testimonial-carousel reveal-fade delay-200">
                     <!-- Prev Card -->
                     <div class="t-side-card t-prev">
                         <img src="./assets/images/testimonials/Lijo Augustin.png" alt="Previous Customer">
@@ -1262,30 +1267,9 @@
 
 
 
-    <!-- 25th Anniversary Dribbble-Style Modal Popup -->
-    <div id="anniversary-popup" class="anniversary-popup">
-        <div class="popup-overlay"></div>
-        <div class="popup-modal">
-            <div class="popup-close" id="popup-close">&times;</div>
-            <div class="confetti c-1"></div>
-            <div class="confetti c-2"></div>
-            <div class="confetti c-3"></div>
-            <div class="confetti c-4"></div>
-            <div class="confetti c-5"></div>
-            <div class="confetti c-6"></div>
-            <div class="confetti c-7"></div>
-            <div class="confetti c-8"></div>
-            <div class="popup-icon">
-                <div class="premium-25">25</div>
-            </div>
-            <div class="popup-text">
-                <h3>Years of Legacy</h3>
-                <p id="typewriter-msg"></p>
-            </div>
-        </div>
-    </div>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script src="./assets/js/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="./assets/js/main.js?v=2"></script>
 </body>
 
 </html>

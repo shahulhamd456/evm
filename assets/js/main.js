@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-up, .reveal-scale, .reveal-fade').forEach(el => observer.observe(el));
 
     /* =========================================
        2. Dealers Interactive Accordion (Infinite Loop)
@@ -579,50 +579,6 @@ document.addEventListener('DOMContentLoaded', () => {
 /* =========================================
    8. 25th Anniversary Popup Logic
    ========================================= */
-document.addEventListener('DOMContentLoaded', () => {
-    const popup = document.getElementById('anniversary-popup');
-    const closeBtn = document.getElementById('popup-close');
-
-    if (popup && closeBtn) {
-        const msgEl = document.getElementById('typewriter-msg');
-        const msg = "Thank you for being part of our legacy and journey.";
-
-        function typeWriterEffect() {
-            let i = 0;
-            msgEl.innerHTML = '';
-            function type() {
-                if (i < msg.length) {
-                    msgEl.innerHTML += msg.charAt(i);
-                    i++;
-                    setTimeout(type, 30);
-                }
-            }
-            type();
-        }
-
-        // Show after 1.5 seconds of page load
-        setTimeout(() => {
-            popup.classList.add('show');
-            setTimeout(typeWriterEffect, 600); // Start typing midway through bounce entrance
-
-            // Auto hide the popup after a set duration (come and go functionality)
-            setTimeout(() => {
-                popup.classList.remove('show');
-                setTimeout(() => {
-                    popup.style.display = 'none';
-                }, 800);
-            }, 6000); // Wait 6 seconds before dismissing
-        }, 1500);
-
-        // Hide on close click
-        closeBtn.addEventListener('click', () => {
-            popup.classList.remove('show');
-            setTimeout(() => {
-                popup.style.display = 'none';
-            }, 800);
-        });
-    }
-});
 
 
 /* =========================================
@@ -853,3 +809,34 @@ function toggleReadMore(expandedId, readMoreId) {
     }
 }
 
+
+/* =========================================
+   15. Premium Hero Intro Orchestration
+   Car drives through with blurred BG,
+   then content reveals after car exits.
+   ========================================= */
+document.addEventListener('DOMContentLoaded', function heroIntroSequence() {
+    const overlay  = document.getElementById('heroIntroOverlay');
+    const reveals  = document.querySelectorAll('.hero-intro-reveal');
+
+    if (!overlay) return;
+
+    // Car animation duration matches the adjusted CSS: 2.8s
+    const CAR_DURATION = 2800; // ms
+
+    // After car exits → fade out blur overlay
+    setTimeout(() => {
+        overlay.classList.add('fade-out');
+
+        // After overlay fades significantly (1000ms transition) → reveal hero text
+        setTimeout(() => {
+            document.querySelectorAll('.hero-intro-reveal, .hero-25-reveal').forEach(el => el.classList.add('hero-visible'));
+
+            // Remove overlay from layout once completely faded (1200ms CSS duration)
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 500); // 1000ms + 500ms > 1200ms CSS duration
+        }, 1000);
+
+    }, CAR_DURATION);
+});
