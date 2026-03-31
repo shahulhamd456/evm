@@ -19,10 +19,8 @@ Premium single-page promotional website for EVM Group celebrating 25 years in th
 ## Animation System
 
 ### Intro Sequence (on page load)
-1. **Cinematic Preloader** (`#evmPreloader`): Full-screen black screen with italic *EVM* logo, "25 YEARS OF LEGACY" tagline, and animated red gradient loading bar. Dismisses at ~2.3s.
-2. **Car Drive-By** (`.hero-intro-car`): Porsche image animates right→left across hero, starts at 2.8s (CSS `animation-delay`), duration 3.6s.
-3. **Speed Lines** (`#heroSpeedLines`): Horizontal light streaks flash when car passes the center (~4.9s mark).
-4. **Hero Content Reveal** (`.hero-intro-reveal`, `.hero-25-reveal`): EVM 25-year graphic and text fade+slide in after car exits (~6.5s), with smooth 1.1–1.3s cubic-bezier transitions and staggered delays.
+1. **Wheel Preloader** (`#evmPreloader`): Full-screen black screen with spinning 5-spoke gold alloy wheel SVG, italic *EVM* logo, "25 YEARS OF LEGACY" tagline, and animated red gradient loading bar. Dismisses at ~2.3s.
+2. **25th Anniversary Reveal** (`.hero-intro-reveal`, `.hero-25-reveal`): 25-year graphic and text fade+slide in immediately after preloader fades (~2.7s), with smooth 1.1–1.3s cubic-bezier transitions and staggered delays.
 
 ### Scroll Animations
 - Classes: `.reveal`, `.reveal-left`, `.reveal-right`, `.reveal-up`, `.reveal-scale`, `.reveal-fade`

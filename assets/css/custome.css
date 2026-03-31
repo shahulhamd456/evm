@@ -6277,54 +6277,28 @@ html[data-theme="dark"] .hero-overlay {
 }
 
 /* ══════════════════════════════════════════
-   HERO SPEED LINES (during car pass)
+   PRELOADER SPINNING WHEEL
    ══════════════════════════════════════════ */
-.hero-speed-lines {
-    position: absolute;
-    inset: 0;
-    z-index: 45;
-    pointer-events: none;
+.evm-wheel-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    animation: preloaderLogoIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
 }
 
-.hero-speed-lines.active {
-    opacity: 1;
+.evm-wheel-svg {
+    width: clamp(100px, 18vw, 150px);
+    height: clamp(100px, 18vw, 150px);
+    animation: wheelSpin 1.4s linear infinite;
+    will-change: transform;
+    filter: drop-shadow(0 0 14px rgba(184, 146, 42, 0.35));
 }
 
-.hero-speed-lines.fading {
-    opacity: 0;
-    transition: opacity 0.6s ease;
-}
-
-.hero-speed-lines span {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
-    transform-origin: left center;
-    transform: scaleX(0);
-    animation: none;
-}
-
-.hero-speed-lines.active span {
-    animation: speedLineFlash 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.hero-speed-lines span:nth-child(1) { top: 22%; animation-delay: 0.00s; }
-.hero-speed-lines span:nth-child(2) { top: 35%; animation-delay: 0.04s; }
-.hero-speed-lines span:nth-child(3) { top: 50%; animation-delay: 0.02s; }
-.hero-speed-lines span:nth-child(4) { top: 62%; animation-delay: 0.06s; }
-.hero-speed-lines span:nth-child(5) { top: 75%; animation-delay: 0.01s; }
-.hero-speed-lines span:nth-child(6) { top: 15%; animation-delay: 0.05s; }
-.hero-speed-lines span:nth-child(7) { top: 44%; animation-delay: 0.03s; }
-.hero-speed-lines span:nth-child(8) { top: 68%; animation-delay: 0.07s; }
-
-@keyframes speedLineFlash {
-    0%   { transform: scaleX(0); opacity: 0; }
-    40%  { transform: scaleX(1); opacity: 1; }
-    100% { transform: scaleX(1); opacity: 0; }
+@keyframes wheelSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
 }
 
 /* ══════════════════════════════════════════

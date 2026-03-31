@@ -812,72 +812,37 @@ function toggleReadMore(expandedId, readMoreId) {
 
 /* =========================================
    15. Premium Hero Intro Orchestration
-   Preloader → Car drives through with blurred BG
-   → Speed lines flash → content reveals.
+   Preloader (spinning wheel) → fades out → 25th content reveals.
    ========================================= */
 (function heroIntroSequence() {
-    const preloader   = document.getElementById('evmPreloader');
-    const overlay     = document.getElementById('heroIntroOverlay');
-    const speedLines  = document.getElementById('heroSpeedLines');
+    const preloader = document.getElementById('evmPreloader');
 
-    // ── Timing constants ──
-    // Preloader bar finishes at ~2.1s; we dismiss at 2.3s, fade takes 0.9s → gone at ~3.2s
-    const PRELOADER_DISMISS = 2300;   // ms: when to start fading preloader
-    const CAR_CSS_DELAY     = 2800;   // ms: CSS animation-delay on car (matches CSS)
-    const CAR_DURATION      = 3600;   // ms: CSS animation duration on car
+    const PRELOADER_DISMISS  = 2300;  // ms: when to start fading preloader
+    const CONTENT_REVEAL_LAG = 400;   // ms after dismiss starts before content appears
 
     // ── Step 1: Dismiss preloader ──────────────────────────────────
     const dismissPreloader = () => {
         if (preloader) {
             preloader.classList.add('preloader-done');
-            // Remove from DOM after transition completes (~0.9s)
             setTimeout(() => {
                 if (preloader.parentNode) preloader.remove();
             }, 1000);
         }
     };
 
-    // ── Step 2: Trigger speed lines mid-car-pass ──────────────────
-    const triggerSpeedLines = () => {
-        if (!speedLines) return;
-        speedLines.classList.add('active');
-        // Remove active after lines have flashed (~700ms)
-        setTimeout(() => {
-            speedLines.classList.remove('active');
-            speedLines.classList.add('fading');
-        }, 700);
-    };
-
-    // ── Step 3: Reveal hero content after car exits ───────────────
+    // ── Step 2: Reveal 25th anniversary hero content ───────────────
     const revealHeroContent = () => {
-        if (overlay) overlay.classList.add('fade-out');
-
-        setTimeout(() => {
-            document.querySelectorAll('.hero-intro-reveal, .hero-25-reveal')
-                .forEach(el => el.classList.add('hero-visible'));
-
-            setTimeout(() => {
-                if (overlay) overlay.style.display = 'none';
-            }, 600);
-        }, 800);
+        document.querySelectorAll('.hero-intro-reveal, .hero-25-reveal')
+            .forEach(el => el.classList.add('hero-visible'));
     };
 
-    // ── Sequence orchestration ────────────────────────────────────
+    // ── Sequence ──────────────────────────────────────────────────
     // Timeline:
-    //   0ms        → page loads, preloader shown
+    //   0ms        → page loads, wheel spinning in preloader
     //   2300ms     → preloader starts fading (0.9s fade)
-    //   2800ms     → car CSS animation begins (CSS delay)
-    //   2800+2160  → car at center (60% of 3600ms) → speed lines flash
-    //   2800+3600  → car exits → hero content reveals
-
+    //   2700ms     → 25th anniversary content fades in
     setTimeout(dismissPreloader, PRELOADER_DISMISS);
-
-    // Speed lines: car center at 60% of its duration after it starts
-    const speedLineTime = CAR_CSS_DELAY + Math.round(CAR_DURATION * 0.58);
-    setTimeout(triggerSpeedLines, speedLineTime);
-
-    // Hero content reveals after car fully exits
-    setTimeout(revealHeroContent, CAR_CSS_DELAY + CAR_DURATION);
+    setTimeout(revealHeroContent, PRELOADER_DISMISS + CONTENT_REVEAL_LAG);
 })();
 
 /* =========================================
