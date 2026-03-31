@@ -812,31 +812,122 @@ function toggleReadMore(expandedId, readMoreId) {
 
 /* =========================================
    15. Premium Hero Intro Orchestration
-   Car drives through with blurred BG,
-   then content reveals after car exits.
+   Preloader → Car drives through with blurred BG
+   → Speed lines flash → content reveals.
    ========================================= */
-document.addEventListener('DOMContentLoaded', function heroIntroSequence() {
-    const overlay  = document.getElementById('heroIntroOverlay');
-    const reveals  = document.querySelectorAll('.hero-intro-reveal');
+(function heroIntroSequence() {
+    const preloader   = document.getElementById('evmPreloader');
+    const overlay     = document.getElementById('heroIntroOverlay');
+    const speedLines  = document.getElementById('heroSpeedLines');
 
-    if (!overlay) return;
+    // ── Timing constants ──
+    // Preloader bar finishes at ~2.1s; we dismiss at 2.3s, fade takes 0.9s → gone at ~3.2s
+    const PRELOADER_DISMISS = 2300;   // ms: when to start fading preloader
+    const CAR_CSS_DELAY     = 2800;   // ms: CSS animation-delay on car (matches CSS)
+    const CAR_DURATION      = 3600;   // ms: CSS animation duration on car
 
-    // Car animation duration matches the adjusted CSS: 2.8s
-    const CAR_DURATION = 2800; // ms
-
-    // After car exits → fade out blur overlay
-    setTimeout(() => {
-        overlay.classList.add('fade-out');
-
-        // After overlay fades significantly (1000ms transition) → reveal hero text
-        setTimeout(() => {
-            document.querySelectorAll('.hero-intro-reveal, .hero-25-reveal').forEach(el => el.classList.add('hero-visible'));
-
-            // Remove overlay from layout once completely faded (1200ms CSS duration)
+    // ── Step 1: Dismiss preloader ──────────────────────────────────
+    const dismissPreloader = () => {
+        if (preloader) {
+            preloader.classList.add('preloader-done');
+            // Remove from DOM after transition completes (~0.9s)
             setTimeout(() => {
-                overlay.style.display = 'none';
-            }, 500); // 1000ms + 500ms > 1200ms CSS duration
-        }, 1000);
+                if (preloader.parentNode) preloader.remove();
+            }, 1000);
+        }
+    };
 
-    }, CAR_DURATION);
-});
+    // ── Step 2: Trigger speed lines mid-car-pass ──────────────────
+    const triggerSpeedLines = () => {
+        if (!speedLines) return;
+        speedLines.classList.add('active');
+        // Remove active after lines have flashed (~700ms)
+        setTimeout(() => {
+            speedLines.classList.remove('active');
+            speedLines.classList.add('fading');
+        }, 700);
+    };
+
+    // ── Step 3: Reveal hero content after car exits ───────────────
+    const revealHeroContent = () => {
+        if (overlay) overlay.classList.add('fade-out');
+
+        setTimeout(() => {
+            document.querySelectorAll('.hero-intro-reveal, .hero-25-reveal')
+                .forEach(el => el.classList.add('hero-visible'));
+
+            setTimeout(() => {
+                if (overlay) overlay.style.display = 'none';
+            }, 600);
+        }, 800);
+    };
+
+    // ── Sequence orchestration ────────────────────────────────────
+    // Timeline:
+    //   0ms        → page loads, preloader shown
+    //   2300ms     → preloader starts fading (0.9s fade)
+    //   2800ms     → car CSS animation begins (CSS delay)
+    //   2800+2160  → car at center (60% of 3600ms) → speed lines flash
+    //   2800+3600  → car exits → hero content reveals
+
+    setTimeout(dismissPreloader, PRELOADER_DISMISS);
+
+    // Speed lines: car center at 60% of its duration after it starts
+    const speedLineTime = CAR_CSS_DELAY + Math.round(CAR_DURATION * 0.58);
+    setTimeout(triggerSpeedLines, speedLineTime);
+
+    // Hero content reveals after car fully exits
+    setTimeout(revealHeroContent, CAR_CSS_DELAY + CAR_DURATION);
+})();
+
+/* =========================================
+   16. Count-Up Number Animation
+   Triggers when stat numbers scroll into view.
+   ========================================= */
+(function initCountUp() {
+    const counters = document.querySelectorAll('.count-up[data-count]');
+    if (!counters.length) return;
+
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+    const animateCounter = (el) => {
+        const target   = parseFloat(el.dataset.count);
+        const suffix   = el.dataset.suffix || '';
+        const isDecimal = !Number.isInteger(target);
+        const duration = 1800; // ms
+        let startTime  = null;
+
+        el.classList.add('counting');
+
+        const step = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const elapsed  = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easedVal = easeOut(progress) * target;
+
+            el.textContent = isDecimal
+                ? easedVal.toFixed(1) + suffix
+                : Math.round(easedVal) + suffix;
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                el.textContent = (isDecimal ? target.toFixed(1) : target) + suffix;
+                el.classList.remove('counting');
+            }
+        };
+
+        requestAnimationFrame(step);
+    };
+
+    const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                countObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.6 });
+
+    counters.forEach(el => countObserver.observe(el));
+})();

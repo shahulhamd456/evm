@@ -281,11 +281,33 @@
         </div>
     </aside>
 
+    <!-- Cinematic Preloader -->
+    <div class="evm-preloader" id="evmPreloader">
+        <div class="evm-preloader-inner">
+            <div class="evm-preloader-logo-wrap">
+                <span class="evm-preloader-logo">EVM</span>
+                <span class="evm-preloader-tagline">25 Years of Legacy</span>
+            </div>
+            <div class="evm-preloader-bar-wrap">
+                <div class="evm-preloader-bar" id="evmPreloaderBar"></div>
+            </div>
+        </div>
+        <div class="evm-preloader-lines" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
     <main>
         <!-- Hero Banner Section -->
         <section class="hero-banner-section" style="overflow: hidden; position: relative;">
             <!-- Cinematic Blur Overlay (during car drive-by) -->
             <div class="hero-intro-overlay" id="heroIntroOverlay"></div>
+
+            <!-- Speed lines during car pass -->
+            <div class="hero-speed-lines" id="heroSpeedLines" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
 
             <!-- Hero Intro Car Animation -->
             <img src="./assets/images/Hero/hero porshe.png" alt="Intro Car" class="hero-intro-car" id="heroIntroCar">
@@ -372,7 +394,7 @@
                                 </button>
                             </div>
                             <div class="trust-stat-info">
-                                <h3 class="trust-stat">68+</h3>
+                                <h3 class="trust-stat count-up" data-count="68" data-suffix="+">68+</h3>
                                 <p class="trust-stat-desc">Years of Industry Experience</p>
                             </div>
                         </div>
@@ -396,7 +418,7 @@
                                 </button>
                             </div>
                             <div class="trust-stat-info">
-                                <h3 class="trust-stat">1.2M</h3>
+                                <h3 class="trust-stat count-up" data-count="1.2" data-suffix="M">1.2M</h3>
                                 <p class="trust-stat-desc">Happy Customers Worldwide</p>
                             </div>
                         </div>
